@@ -1,0 +1,201 @@
+#+OPTIONS: html-link-use-abs-url:nil html-postamble:nil
+#+OPTIONS: html-preamble:t html-scripts:t html-style:t
+#+OPTIONS: html5-fancy:t tex:t
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_CONTAINER: div
+#+DESCRIPTION:
+#+KEYWORDS:
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+HTML_HEAD:<style>.org-ol {list-style: none; font-weight: bold;} .org-ol > li > div {font-weight: normal;} .section-number-4 { display:none; } p {margin-top:0px;}</style>
+#+HTML_HEAD_EXTRA:
+#+TITLE: AI, Knowledge Representation, and Machine Learning
+#+SUBTITLE:
+#+INFOJS_OPT:
+#+CREATOR:
+#+LATEX_HEADER:
+
+* Course Description
+  This course surveys the field of artificial intelligence and its two main 
+  threads: knowledge-based and machine-learning approaches.
+  We will pay special attention to how AI systems reflect and reify not just
+  the knowledge of their creators, but also their values and implicit biases.
+  In recent years we have seen a proliferation of AI systems that filter news 
+  feeds, hyper-target advertisements, act as personal assistants, determine 
+  apartment rental rates, and even attempt to identify suspected terrorists. 
+  Whenever we build an AI system, we choose how to represent the world and the 
+  problem we want to solve, and this decision must consider ethics as much as
+  the performance of the resulting algorithm. 
+  On the positive side, if AI systems can encode values, then we can also use
+  them to creative or socially beneficial ends!
+  AI systems can generate novel stories and works of art, provide compelling 
+  opponents in games, and personalize education for individual learners.
+
+  This course will engage with active research in deep learning, computational 
+  creativity, video game AI, natural language understanding, and the ethics of 
+  AI.
+  Students will learn the core principles of AI with worked examples, writing
+  programs in Prolog and Python to apply the techniques shown in lectures and
+  readings.
+  We will also critically analyze commercial and research AI
+  projects to understand how they function (building smaller versions on 
+  the way), the extent to which they are successful at their stated aims, 
+  how they fit into the history of AI, and what they say about their creators 
+  and society at large.
+
+* Course Format
+  Each day's lecture will be broken up into three main topics.
+  I envision the schedule looking like this:
+
+  * 9:00-9:15 ::
+    Q&A for previous day's reading or work (I'll prepare topics if the whole time 
+    is not used). On the first day, this will be introductions and logistics.
+  * 9:15-9:35 ::
+    The first topic of the morning.
+  * 9:35-9:45 ::
+    A small group exercise, followed by a 5 minute break.
+  * 9:50-10:00 ::
+    Review and discussion of the results of the exercise.
+  * 10:00-10:30 ::
+    The second topic of the morning.
+  * 10:40-11:10 ::
+    The third topic of the morning.
+  * 11:10-11:30 ::
+     Introduction to the day's assignment. Q&A.
+
+  Each day will have a reading along with a small programming assignment.
+  There will also be a final project comprising either a larger AI programming
+  project or a research paper deeply exploring some AI system, topic, or 
+  technique(s).
+  This final project may be tackled alone or in a group of no more than 3 
+  students.
+
+* Course Outline
+** Foundations of AI
+*** Day 1
+**** Reading 
+  Before day 1, it is expected that students will read a few pages of
+  excerpts from Philip Agre's "Computation and Human Experience", as well as
+  some material from D. Fox Harrell's recent publications
+**** Topic 1: What is AI?
+  Introduction to main threads of AI research. What is and is not AI. Historical
+  and present uses of the term. AI winter. Creative and commercial uses of AI.
+  Generative methods. Modern AI as a set of techniques, rather than an attempt 
+  to simulate the brain.
+**** Exercise
+  Identify three AI systems. For each one, discuss and decide whether
+  it is mainly knowledge-based or mainly machine-learning-based.
+**** Topic 2: Critical Technical Practice & the Ethics of AI
+  Explication of Agre's approach to AI.
+  Examples from recent high-profile AI incidents including Microsoft's "Tay" 
+  chatbot, noise-based attacks on Google's image classifiers, MaxMind's IP
+  mapping, Facebook's algorithmic feed emotion manipulation research.
+**** Topic 3: How to submit assignments. Q&A.
+**** Assignment
+  Individual (short) assignment.
+  Pick an AI system, describe it briefly, and explain 
+  its "perspective." 
+  Who wrote this system and for what purpose? 
+  Who uses the system---are their goals
+  aligned with those of the system authors? 
+  From a knowledge representation 
+  standpoint, how does it view the world? 
+  Which concepts are central, and which 
+  concepts are peripheral? 
+  How does this system interact with humans, and what 
+  does it know or assume about the humans who use it? 
+  How could a hostile user 
+  or third party subvert this system and break it or harrass/injure other users?
+  Consult the documentation of this system, or articles written about it,
+  if necessary.
+  Write at least 300 words. 
+  
+  /(TAs could help students think of or explicate AI systems and draw out answers to these questions. Enterprising students could write more, engaging with the subject more deeply; or compare two or more different AI approaches to the same problem, with respect to the criteria above.)/
+*** Day 2: Python, data structures, and iterative algorithms
+**** Topic 1: Running simple (I)Python code
+**** Topic 2: Building and processing interesting data structures
+**** Topic 3: State machines and string recognizers
+*** Day 3: Search and Planning
+**** Topic 1: Posing problems as graph search. Graph traversal.
+  Example: PuzzleGraph.
+**** Exercise:
+  Pick an interesting problem and try to phrase it as "search". I could seed
+  this with examples from Karp's 21 NP-complete problems.
+**** Topic 2: Heuristic search (A* and friends)
+**** Topic 3: Game-tree search and Nash equilibria
+**** Assignment
+  Individual (short) assignment.
+  Write a Python program to solve a maze with one of the search algorithms
+  described during the lecture. Try it on the provided sample mazes;
+  if some mazes give your program trouble, try to explain why that happens.
+
+  /(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate a maze.)/
+*** Day 4: Constraint Satisfaction
+**** Topic 1: Constraint satisfaction problems
+**** Topic 2: Constraint propagation
+**** Topic 3: Conflict-driven learning
+*** Day 5: Optimization
+**** Reading
+  Excerpts from Bratton & Sutton-Smith, and recent MCTS presentation slides.
+**** Topic 1: Linear constraint optimization with the simplex algorithm
+**** Topic 2: Exploit/explore tradeoff and reinforcement learning
+**** Topic 3: MCTS
+**** Assignment
+  Individual (longer) assignment.
+
+  Modify your Python program from day 3 (or start from my example program)
+  to use reinforcement learning to find the goal---only now, the mazes have
+  trap doors into which your agent (might) fall! The agent's policy may
+  only look at its current room, but it may examine its available
+  steps and its previous steps. See how many iterations it takes to learn to
+  solve the maze, and how long it takes to find the shortest paths. If you have
+  time, try to apply MCTS and compare the results.
+  
+  /(TAs could help by explaining and enforcing the limitations on the agents, and helping to visualize and present the results.)/
+** Knowledge Representation and Rule-Based Systems
+*** Day 6: Formal Logic & Prolog Crash Course
+**** Topic 1: Propositional logic and inference
+**** Topic 2: Prolog and proof search
+**** Topic 3: First-order logic and recursion
+*** Day 7: Rule-based systems and grammars
+**** Reading
+  Generative Methods paper (Compton, Osborn, & Mateas)
+**** Topic 1: What is a rule-based system?
+**** Topic 2: Grammars vs guess-and-check
+**** Topic 3: Priority and precedence
+*** Day 8: Planning with Logic
+**** Reading
+  Primary sources, including McCarthy for the basics and current GGP papers for topic 3.
+**** Topic 1: Temporal logic and event calculus
+**** Topic 2: State transitions as predicates
+**** Topic 3: General game-playing
+*** Day 9: Argumentation and Defeasible Logic
+**** Reading
+  At least Nute's defeasible logic paper.
+**** Topic 1: Reasoning with exceptions; non-binary logic
+**** Topic 2: Reasoning about counterfactuals
+**** Topic 3: Evaluating arguments
+*** Day 10: Probabilistic Logic
+**** Topic 1: Basic probability
+**** Topic 2: Probabilistic inference
+**** Topic 3: Bayes theorem
+** Machine Learning
+*** Day 11: Machine learning as function approximation
+**** Topic 1: Error minimization and regression
+**** Topic 2: Naive Bayes
+**** Topic 3: Perceptrons
+*** Day 12: (Recurrent) Neural Networks
+**** Reading
+  "The Unreasonable Effectiveness of RNNs" (Blog post)
+**** Topic 1: Neural networks
+**** Topic 2: Image recognition and convolution
+**** Topic 3: String-to-string translation
+*** Day 13: Deep Learning
+**** Reading
+  Primary sources on deep neural networks
+**** Topic 1: Deep neural networks
+**** Topic 2: Deep Reinforcement Learning
+**** Topic 3: Generative methods
+*** Day 14: Presentations 1. New directions in AI.
+*** Day 15: Presentations 2.
