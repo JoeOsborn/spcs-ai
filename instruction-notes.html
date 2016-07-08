@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Joseph C. Osborn" />
+  <title>Schedule</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Schedule</h1>
+<h2 class="author">Joseph C. Osborn</h2>
+</div>
+<p>This document is intended for use by the instructor and TAs, since we don’t want to commit to a firm schedule or show the readings/assignments too far in advance (it might be confusing).</p>
+<p><strong>Todo: big open question is whether to bring in machine learning stuff earlier, though I think the logic stuff is important… maybe preview it in the first week and move the probabilistic stuff earlier? pymc3?</strong></p>
+<ul>
+<li>Day 1: What is AI?
+<ul>
+<li><dl>
+<dt>Reading</dt>
+<dd>Before doing today’s assignment, students should read a few the excerpts from Philip Agre’s “Computation and Human Experience” as well as the D. Fox Harrell paper in the reader.
+</dd>
+</dl></li>
+<li><dl>
+<dt>Topic 1: What is AI?</dt>
+<dd>Introduction to main threads of AI research. What is and is not AI. Historical and present uses of the term. AI winter. Sidestepping “what is ‘intelligence’”? Creative and commercial uses of AI. Generative methods. Modern AI as a set of techniques, rather than an attempt to simulate the brain. “Getting good results” vs “learning/claiming something about cognition”.
+</dd>
+<dd>(Include some Game AI, some mixed initiative stuff, some of my research area here.)
+</dd>
+</dl></li>
+<li><dl>
+<dt>Exercise</dt>
+<dd>Identify three AI systems. For each one, discuss and decide whether it is mainly knowledge-based or mainly machine-learning-based.
+</dd>
+</dl></li>
+<li><dl>
+<dt>Topic 2: Critical Technical Practice &amp; the Ethics of AI</dt>
+<dd>Explication of Agre’s approach to AI. Examples from recent high-profile AI incidents including Microsoft’s “Tay” chatbot, noise-based attacks on Google’s image classifiers, MaxMind’s IP mapping, Facebook’s algorithmic feed emotion manipulation research.
+</dd>
+</dl></li>
+<li><p>Topic 3: How to submit assignments. Q&amp;A.</p></li>
+<li><dl>
+<dt>Assignment 1</dt>
+<dd>Individual (short) assignment.
+</dd>
+</dl>
+<p>Pick an AI system, describe it briefly, and explain its “perspective.” Who wrote this system and for what purpose? Who uses the system—are their goals aligned with those of the system authors? From a knowledge representation standpoint, how does it view the world? Which concepts are central, and which concepts are peripheral? How does this system interact with humans, and what does it know or assume about the humans who use it? How could a hostile user or third party subvert this system and break it or harrass/injure other users? Consult the documentation of this system, or articles written about it, if necessary. Write at least 300 words.</p>
+<em>TAs could help students think of or explicate AI systems and draw out answers to these questions. Enterprising students could write more, engaging with the subject more deeply; or compare two or more different AI approaches to the same problem, with respect to the criteria above.</em></li>
+<li><dl>
+<dt>Assignment 2</dt>
+<dd>Individual (short) assignment.
+</dd>
+</dl>
+Be sure you can run a simple IPython “hello world”-type example. Submit such a notebook.</li>
+</ul></li>
+<li>Day 2: Python, data structures, and algorithms
+<ul>
+<li>Topic 1: Building and processing interesting data structures</li>
+<li>Topic 2: State machines and string recognizers</li>
+<li>Topic 3: Graph traversal</li>
+<li><dl>
+<dt>Assignment</dt>
+<dd>Individual (short) assignment. Write two state machine evaluators for word automata: one which takes a state machine representing a language along with a string, and checks whether the machine accepts the string; and another which takes such a state machine and generates strings from it.
+</dd>
+</dl>
+<em>We’ll provide the state machine data structures. Students with extra time could write a regular expression parser, or write functions to take the intersection or union of two languages, or visualize the evaluation steps.</em></li>
+</ul></li>
+<li>Day 3: Search and Planning
+<ul>
+<li><dl>
+<dt>Reading</dt>
+<dd>Excerpts from Sutton &amp; Barto <span class="citation">(1998)</span> and recent MCTS presentation slides.
+</dd>
+</dl></li>
+<li>Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore.</li>
+<li>Exercise: Pick an interesting problem and try to phrase it as “local search”.</li>
+<li>Topic 2: MCTS and back propagation</li>
+<li>Topic 3: Reinforcement learning</li>
+<li><dl>
+<dt>Assignment</dt>
+<dd>Individual or pair (long) assignment. (1) should be done by tomorrow, (2) and (3) by Monday.
+<ol style="list-style-type: decimal">
+<li>Write a Python program to solve switch and door puzzles with one of the heuristic search algorithms described during the lecture. <em>(We’ll provide a Puzzle class and sample puzzles, and maybe a function to draw puzzles or solution paths to the console or an image?)</em> Try it on the provided sample puzzles; if some puzzles give your program trouble, try to explain why that happens.</li>
+</ol>
+</dd>
+</dl>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Once you have this working, write an agent which finds a policy for a “blind” puzzle using MCTS. “Blind” puzzles are just like the puzzles above, only (1) you don’t get to see the whole puzzle or know the goal states in advance, and (2) some nodes are trap doors with a chance of dropping the player into a bottomless pit! Try different policies for deciding between exploit/explore and for doing rollouts and compare them. <em>(We’ll provide a BlindPuzzle class and sample mazes, and maybe a function to draw mazes or maze paths to the console or an image?)</em></p></li>
+<li><p>Do (2) but with reinforcement learning. Compare state-value vs action-value learning vs MCTS in terms of iterations required to reach a certain score, etc.</p></li>
+</ol>
+<em>(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate mazes, visualize the path-finding algorithms.)</em></li>
+</ul></li>
+<li>Day 4: Overview of knowledge-based and machine-learning methods.
+<ul>
+<li><strong>Note: also need to do intermediate evaluations at the end of the day</strong></li>
+<li>Reading</li>
+<li><dl>
+<dt>Topic 1: Expert systems</dt>
+<dd>Grammars, logical systems, argumentation, social simulations, …
+</dd>
+<dd>Expense, fragility, rhetorical purpose, …
+</dd>
+</dl></li>
+<li><dl>
+<dt>Topic 2: Statistical methods</dt>
+<dd>Genetic algorithms/programming, neural nets, machine learning, …
+</dd>
+<dd>Choice of loss function, metrics, overfitting, “money laundering for bias” …
+</dd>
+</dl></li>
+<li>Topic 3: Let’s talk about projects</li>
+<li><dl>
+<dt>Assignment</dt>
+<dd>Individual (small) assignment.
+</dd>
+</dl>
+Give me a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well.</li>
+</ul></li>
+<li>Day 5: Probabilistic programming
+<ul>
+<li>Topic 1: Basic probability/Bayes rule</li>
+<li>Topic 2: Probabilistic programming (pymc3)</li>
+<li>Topic 3: Naive Bayes classifiers</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Individual or pair (longer) assignment
+</dd>
+</dl>
+Write a probabilistic program that does something, maybe with unreliable data input, in pymc3. Creative AI, puzzle solving, game character behavior, …?</li>
+</ul></li>
+<li>Day 6: Machine learning as function approximation
+<ul>
+<li>Topic 1: Error minimization and regression/gradient descent
+<ul>
+<li>Overfitting, linearity, curse of dimensionality …</li>
+</ul></li>
+<li>Topic 2: Perceptrons</li>
+<li>Topic 3: Perceptron networks</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Write a perceptron or simple NN, classify something. We’ll need to provide data sets!
+</dd>
+</dl></li>
+</ul></li>
+<li><dl>
+<dt>Day 7: Deep Neural Networks</dt>
+<dd><strong>Note: need to finalize projects</strong>
+<ul>
+<li><dl>
+<dt>Reading</dt>
+<dd>Primary sources on deep neural networks
+</dd>
+</dl></li>
+<li>Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)</li>
+<li>Topic 2: Image recognition and convolution</li>
+<li>Topic 3: Auto-encoders</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Write a string to string thing or image classifier or char-level RNN thing? Dataset cleaning practice? Tension: learning times…
+</dd>
+</dl></li>
+</ul>
+</dd>
+</dl></li>
+<li>Day 8: Recurrent Neural Networks
+<ul>
+<li><em>Finalize project ideas by end of today!</em></li>
+<li><dl>
+<dt>Reading</dt>
+<dd>“The Unreasonable Effectiveness of RNNs” (Blog post)
+</dd>
+</dl></li>
+<li>Topic 1: String-to-string translation</li>
+<li>Topic 2: Style Transfer</li>
+<li>Topic 3: Deep Reinforcement Learning</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Write a style transfer thing or auto encoder or deep RL game player?
+</dd>
+</dl></li>
+</ul></li>
+<li>Day 9: Creative AI
+<ul>
+<li><dl>
+<dt>Reading</dt>
+<dd>Generative Methods paper <span class="citation">(Compton, Osborn, and Mateas 2013)</span> and Kate’s PCG blog.
+</dd>
+</dl></li>
+<li>Topic: What is creative AI? Intro to Tracery.</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Individual or pair (medium-length) assignment. Due Monday.
+</dd>
+</dl>
+<p>Make a Tracery grammar to generate some interesting artifact: Genre stories, TV episodes, SVG images, Emoji compositions, musical leitmotifs, classified ads, inspirational quotes, fantasy game items, … and put up a Twitter bot with it. Go as far as you can with this.</p>
+<em>Todo:elaborate.</em></li>
+</ul></li>
+<li>Day 10: Formal Logic &amp; Prolog Crash Course
+<ul>
+<li>Topic 1: Propositional logic and inference</li>
+<li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.</li>
+<li>Topic 3: Planning with temporal logic and the event calculus. General game playing.</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Individual (short) assignment.
+</dd>
+</dl>
+<p>Todo: Some kind of knowledge base or expert system… or a maze generator-cum-solver… or something that shows how much more compact Prolog programs can be than Python ones?</p>
+GGP something something?</li>
+</ul></li>
+<li>Day 11: Argumentation and Non-Monotonic Logics
+<ul>
+<li><dl>
+<dt>Reading</dt>
+<dd>At least Nute’s defeasible logic paper.
+</dd>
+</dl></li>
+<li>Topic 1: Reasoning with exceptions; non-binary logic; defeasible logic, deontic logic, …</li>
+<li>Topic 2: Reasoning about counterfactuals</li>
+<li>Topic 3: Evaluating arguments</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Individual (medium-length) assignment.
+</dd>
+</dl>
+<p><em>Todo: clean up.</em></p>
+<p>Encode some argumentation logic or legal thing or social thing or artistic thing or…</p>
+Generate argument trees using a meta-interpreter and evaluate their quality. Provide a writeup describing your rationale and showing some example claims, arguments, and evaluations. There should be a couple of arguments generated for each claim so we (human readers) can see differences in the evaluations. If there’s no “subjectivity” in the argumentation, you’re probably not doing it right!</li>
+</ul></li>
+<li>Day 12: Project workshopping and research talk. Or more Prolog stuff, general game playing? Or other topics related to the projects?</li>
+<li>Day 13: Presentations 1. New directions in AI.</li>
+<li>Day 14: Presentations 2.</li>
+</ul>
+<h1 id="references" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-compton2013generative">
+<p>Compton, Kate, Joseph C Osborn, and Michael Mateas. 2013. “Generative Methods.” In <em>The Fourth Procedural Content Generation in Games Workshop, PCG</em>. Vol. 1.</p>
+</div>
+<div id="ref-sutton1998reinforcement">
+<p>Sutton, Richard S, and Andrew G Barto. 1998. <em>Reinforcement Learning: An Introduction</em>. Vol. 1. 1. MIT press Cambridge.</p>
+</div>
+</div>
+</body>
+</html>

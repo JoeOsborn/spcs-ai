@@ -1,497 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- 2016-04-11 Mon 22:48 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>AI, Knowledge Representation, and Machine Learning</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Joseph C. Osborn" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
-  .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
-  .tag    { background-color: #eee; font-family: monospace;
-            padding: 2px; font-size: 80%; font-weight: normal; }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
-  .underline { text-decoration: underline; }
-  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
-  p.verse { margin-left: 3%; }
-  pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    font-family: monospace;
-    overflow: auto;
-    margin: 1.2em;
-  }
-  pre.src {
-    position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
-  }
-  pre.src:before {
-    display: none;
-    position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
-    padding: 3px;
-    border: 1px solid black;
-  }
-  pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
-  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
-
-  table { border-collapse:collapse; }
-  caption.t-above { caption-side: top; }
-  caption.t-bottom { caption-side: bottom; }
-  td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
-  dt { font-weight: bold; }
-  .footpara { display: inline; }
-  .footdef  { margin-bottom: 1em; }
-  .figure { padding: 1em; }
-  .figure p { text-align: center; }
-  .inlinetask {
-    padding: 10px;
-    border: 2px solid gray;
-    margin: 10px;
-    background: #ffffcc;
-  }
-  #org-div-home-and-up
-   { text-align: right; font-size: 70%; white-space: nowrap; }
-  textarea { overflow-x: auto; }
-  .linenr { font-size: smaller }
-  .code-highlighted { background-color: #ffff00; }
-  .org-info-js_info-navigation { border-style: none; }
-  #org-info-js_console-label
-    { font-size: 10px; font-weight: bold; white-space: nowrap; }
-  .org-info-js_search-highlight
-    { background-color: #ffff00; color: #000000; font-weight: bold; }
-  /*]]>*/-->
-</style>
-<style>.org-ol {list-style: none; font-weight: bold;} .org-ol > li > div {font-weight: normal;} .section-number-4 { display:none; } p {margin-top:0px;}</style>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Joseph C. Osborn" />
+  <title>AI, Knowledge Representation, and Machine Learning</title>
+  <style type="text/css">code{white-space: pre;}</style>
 </head>
 <body>
-<div id="content">
+<div id="header">
 <h1 class="title">AI, Knowledge Representation, and Machine Learning</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<h2 class="author">Joseph C. Osborn</h2>
+</div>
+<div id="TOC">
 <ul>
-<li><a href="#orgheadline1">1. Course Description</a></li>
-<li><a href="#orgheadline2">2. Course Format</a></li>
-<li><a href="#orgheadline73">3. Course Outline</a>
-<ul>
-<li><a href="#orgheadline26">3.1. Foundations of AI</a>
-<ul>
-<li><a href="#orgheadline9">3.1.1. Day 1: What is AI?</a></li>
-<li><a href="#orgheadline13">3.1.2. Day 2: Python, data structures, and iterative algorithms</a></li>
-<li><a href="#orgheadline19">3.1.3. Day 3: Search and Planning</a></li>
-<li><a href="#orgheadline25">3.1.4. Day 4: Optimization</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline55">3.2. Knowledge Representation and Rule-Based Systems</a>
-<ul>
-<li><a href="#orgheadline30">3.2.1. Day 5: Formal Logic &amp; Prolog Crash Course</a></li>
-<li><a href="#orgheadline35">3.2.2. Day 6: Rule-based systems and grammars</a></li>
-<li><a href="#orgheadline40">3.2.3. Day 7: Planning with Logic</a></li>
-<li><a href="#orgheadline45">3.2.4. Day 8 (option 1): Argumentation and Defeasible Logic</a></li>
-<li><a href="#orgheadline50">3.2.5. Day 8 (option 2): Constraint (logic) programming</a></li>
-<li><a href="#orgheadline54">3.2.6. Day 9: Probabilistic Logic</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline72">3.3. Machine Learning</a>
-<ul>
-<li><a href="#orgheadline59">3.3.1. Day 10: Machine learning as function approximation</a></li>
-<li><a href="#orgheadline64">3.3.2. Day 11: (Recurrent) Neural Networks</a></li>
-<li><a href="#orgheadline69">3.3.3. Day 12: Deep Learning</a></li>
-<li><a href="#orgheadline70">3.3.4. Day 13: Presentations 1. New directions in AI.</a></li>
-<li><a href="#orgheadline71">3.3.5. Day 14: Presentations 2.</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#objective">Objective</a></li>
+<li><a href="#format">Format</a></li>
+<li><a href="#topics">Topics</a></li>
+<li><a href="#project-ideas">Project ideas</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 </div>
-</div>
-
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Course Description</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-This course surveys the field of artificial intelligence and its two main 
-threads: knowledge-based and machine-learning approaches.
-We will pay special attention to how AI systems reflect and reify not just
-the knowledge of their creators, but also their values and implicit biases.
-In recent years we have seen a proliferation of AI systems that filter news 
-feeds, hyper-target advertisements, act as personal assistants, determine 
-apartment rental rates, and even attempt to identify suspected terrorists. 
-Whenever we build an AI system, we choose how to represent the world and the 
-problem we want to solve, and this decision must consider ethics as much as
-the performance of the resulting algorithm. 
-On the positive side, if AI systems can encode values, then we can also use
-them to creative or socially beneficial ends!
-AI systems can generate novel stories and works of art, provide compelling 
-opponents in games, and personalize education for individual learners.
-</p>
-
-<p>
-This course will engage with active research in deep learning, computational 
-creativity, video game AI, natural language understanding, and the ethics of 
-AI.
-Students will learn the core principles of AI with worked examples, writing
-programs in Prolog and Python to apply the techniques shown in lectures and
-readings.
-We will also critically analyze commercial and research AI
-projects to understand how they function (building smaller versions on 
-the way), the extent to which they are successful at their stated aims, 
-how they fit into the history of AI, and what they say about their creators 
-and society at large.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Course Format</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-Each day's lecture will be broken up into three main topics.
-I envision the schedule looking like this:
-</p>
-
-<dl class="org-dl">
-<dt>9:00-9:15</dt><dd>Q&amp;A for previous day's reading or work (I'll prepare topics if the whole time 
-is not used). On the first day, this will be introductions and logistics.</dd>
-<dt>9:15-9:35</dt><dd>The first topic of the morning.</dd>
-<dt>9:35-9:45</dt><dd>A small group exercise, followed by a 5 minute break.</dd>
-<dt>9:50-10:00</dt><dd>Review and discussion of the results of the exercise.</dd>
-<dt>10:00-10:30</dt><dd>The second topic of the morning.</dd>
-<dt>10:40-11:10</dt><dd>The third topic of the morning.</dd>
-<dt>11:10-11:30</dt><dd>Introduction to the day's assignment. Q&amp;A.</dd>
-</dl>
-
-<p>
-Each day will have a reading along with a small programming assignment.
-There will also be a final project comprising either a larger AI programming
-project or a research paper deeply exploring some AI system, topic, or 
-technique(s).
-This final project may be tackled alone or in a group of no more than 3 
-students.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline73" class="outline-2">
-<h2 id="orgheadline73"><span class="section-number-2">3</span> Course Outline</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline26" class="outline-3">
-<h3 id="orgheadline26"><span class="section-number-3">3.1</span> Foundations of AI</h3>
-<div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9"><span class="section-number-4">3.1.1</span> Day 1: What is AI?</h4>
-<div class="outline-text-4" id="text-3-1-1">
-</div><ol class="org-ol"><li><a id="orgheadline3"></a>Reading<br  /><div class="outline-text-5" id="text-3-1-1-1">
-<p>
-Before day 1, it is expected that students will read a few pages of
-excerpts from Philip Agre's "Computation and Human Experience", as well as
-some material from D. Fox Harrell's recent publications
-</p>
-</div></li>
-<li><a id="orgheadline4"></a>Topic 1: What is AI?<br  /><div class="outline-text-5" id="text-3-1-1-2">
-<p>
-Introduction to main threads of AI research. What is and is not AI. Historical
-and present uses of the term. AI winter. Creative and commercial uses of AI.
-Generative methods. Modern AI as a set of techniques, rather than an attempt 
-to simulate the brain.
-</p>
-</div></li>
-<li><a id="orgheadline5"></a>Exercise<br  /><div class="outline-text-5" id="text-3-1-1-3">
-<p>
-Identify three AI systems. For each one, discuss and decide whether
-it is mainly knowledge-based or mainly machine-learning-based.
-</p>
-</div></li>
-<li><a id="orgheadline6"></a>Topic 2: Critical Technical Practice &amp; the Ethics of AI<br  /><div class="outline-text-5" id="text-3-1-1-4">
-<p>
-Explication of Agre's approach to AI.
-Examples from recent high-profile AI incidents including Microsoft's "Tay" 
-chatbot, noise-based attacks on Google's image classifiers, MaxMind's IP
-mapping, Facebook's algorithmic feed emotion manipulation research.
-</p>
-</div></li>
-<li><a id="orgheadline7"></a>Topic 3: How to submit assignments. Q&amp;A.<br  /></li>
-<li><a id="orgheadline8"></a>Assignment<br  /><div class="outline-text-5" id="text-3-1-1-6">
-<p>
-Individual (short) assignment.
-Pick an AI system, describe it briefly, and explain 
-its "perspective." 
-Who wrote this system and for what purpose? 
-Who uses the system&#x2014;are their goals
-aligned with those of the system authors? 
-From a knowledge representation 
-standpoint, how does it view the world? 
-Which concepts are central, and which 
-concepts are peripheral? 
-How does this system interact with humans, and what 
-does it know or assume about the humans who use it? 
-How could a hostile user 
-or third party subvert this system and break it or harrass/injure other users?
-Consult the documentation of this system, or articles written about it,
-if necessary.
-Write at least 300 words. 
-</p>
-
-<p>
-<i>(TAs could help students think of or explicate AI systems and draw out answers to these questions. Enterprising students could write more, engaging with the subject more deeply; or compare two or more different AI approaches to the same problem, with respect to the criteria above.)</i>
-</p>
-</div></li></ol>
-</div>
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">3.1.2</span> Day 2: Python, data structures, and iterative algorithms</h4>
-<div class="outline-text-4" id="text-3-1-2">
-</div><ol class="org-ol"><li><a id="orgheadline10"></a>Topic 1: Running simple (I)Python code<br  /></li>
-<li><a id="orgheadline11"></a>Topic 2: Building and processing interesting data structures<br  /></li>
-<li><a id="orgheadline12"></a>Topic 3: State machines and string recognizers<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="orgheadline19"><span class="section-number-4">3.1.3</span> Day 3: Search and Planning</h4>
-<div class="outline-text-4" id="text-3-1-3">
-</div><ol class="org-ol"><li><a id="orgheadline14"></a>Topic 1: Posing problems as graph search. Graph traversal.<br  /><div class="outline-text-5" id="text-3-1-3-1">
-<p>
-Example: PuzzleGraph.
-</p>
-</div></li>
-<li><a id="orgheadline15"></a>Exercise:<br  /><div class="outline-text-5" id="text-3-1-3-2">
-<p>
-Pick an interesting problem and try to phrase it as "search". I could seed
-this with examples from Karp's 21 NP-complete problems.
-</p>
-</div></li>
-<li><a id="orgheadline16"></a>Topic 2: Heuristic search (A* and friends)<br  /></li>
-<li><a id="orgheadline17"></a>Topic 3: Game-tree search and Nash equilibria<br  /></li>
-<li><a id="orgheadline18"></a>Assignment<br  /><div class="outline-text-5" id="text-3-1-3-5">
-<p>
-Individual (short) assignment.
-Write a Python program to solve a maze with one of the search algorithms
-described during the lecture. Try it on the provided sample mazes;
-if some mazes give your program trouble, try to explain why that happens.
-</p>
-
-<p>
-<i>(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate a maze.)</i>
-</p>
-</div></li></ol>
-</div>
-<div id="outline-container-orgheadline25" class="outline-4">
-<h4 id="orgheadline25"><span class="section-number-4">3.1.4</span> Day 4: Optimization</h4>
-<div class="outline-text-4" id="text-3-1-4">
-</div><ol class="org-ol"><li><a id="orgheadline20"></a>Reading<br  /><div class="outline-text-5" id="text-3-1-4-1">
-<p>
-Excerpts from Bratton &amp; Sutton-Smith, and recent MCTS presentation slides.
-</p>
-</div></li>
-<li><a id="orgheadline21"></a>Topic 1: Linear constraint optimization with the simplex algorithm<br  /></li>
-<li><a id="orgheadline22"></a>Topic 2: Exploit/explore tradeoff and reinforcement learning<br  /></li>
-<li><a id="orgheadline23"></a>Topic 3: MCTS<br  /></li>
-<li><a id="orgheadline24"></a>Assignment<br  /><div class="outline-text-5" id="text-3-1-4-5">
-<p>
-Individual (longer) assignment.
-</p>
-
-<p>
-Modify your Python program from day 3 (or start from my example program)
-to use reinforcement learning to find the goal&#x2014;only now, the mazes have
-trap doors into which your agent (might) fall! The agent's policy may
-only look at its current room, but it may examine its available
-steps and its previous steps. See how many iterations it takes to learn to
-solve the maze, and how long it takes to find the shortest paths. If you have
-time, try to apply MCTS and compare the results.
-</p>
-
-<p>
-<i>(TAs could help by explaining and enforcing the limitations on the agents, and helping to visualize and present the results.)</i>
-</p>
-</div></li></ol>
-</div>
-</div>
-<div id="outline-container-orgheadline55" class="outline-3">
-<h3 id="orgheadline55"><span class="section-number-3">3.2</span> Knowledge Representation and Rule-Based Systems</h3>
-<div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-orgheadline30" class="outline-4">
-<h4 id="orgheadline30"><span class="section-number-4">3.2.1</span> Day 5: Formal Logic &amp; Prolog Crash Course</h4>
-<div class="outline-text-4" id="text-3-2-1">
-</div><ol class="org-ol"><li><a id="orgheadline27"></a>Topic 1: Propositional logic and inference<br  /></li>
-<li><a id="orgheadline28"></a>Topic 2: Prolog and proof search<br  /></li>
-<li><a id="orgheadline29"></a>Topic 3: First-order logic and recursion<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline35" class="outline-4">
-<h4 id="orgheadline35"><span class="section-number-4">3.2.2</span> Day 6: Rule-based systems and grammars</h4>
-<div class="outline-text-4" id="text-3-2-2">
-</div><ol class="org-ol"><li><a id="orgheadline31"></a>Reading<br  /><div class="outline-text-5" id="text-3-2-2-1">
-<p>
-Generative Methods paper (Compton, Osborn, &amp; Mateas) and Kate's PCG blog. Possible field trip to Computer History Museum?
-</p>
-</div></li>
-<li><a id="orgheadline32"></a>Topic 1: What is a rule-based system?<br  /></li>
-<li><a id="orgheadline33"></a>Topic 2: Grammars vs guess-and-check<br  /></li>
-<li><a id="orgheadline34"></a>Topic 3: Priority and precedence<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline40" class="outline-4">
-<h4 id="orgheadline40"><span class="section-number-4">3.2.3</span> Day 7: Planning with Logic</h4>
-<div class="outline-text-4" id="text-3-2-3">
-</div><ol class="org-ol"><li><a id="orgheadline36"></a>Reading<br  /><div class="outline-text-5" id="text-3-2-3-1">
-<p>
-Primary sources, including McCarthy for the basics and current GGP papers for topic 3.
-</p>
-</div></li>
-<li><a id="orgheadline37"></a>Topic 1: Temporal logic and event calculus<br  /></li>
-<li><a id="orgheadline38"></a>Topic 2: State transitions as predicates<br  /></li>
-<li><a id="orgheadline39"></a>Topic 3: General game-playing<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline45" class="outline-4">
-<h4 id="orgheadline45"><span class="section-number-4">3.2.4</span> Day 8 (option 1): Argumentation and Defeasible Logic</h4>
-<div class="outline-text-4" id="text-3-2-4">
-</div><ol class="org-ol"><li><a id="orgheadline41"></a>Reading<br  /><div class="outline-text-5" id="text-3-2-4-1">
-<p>
-At least Nute's defeasible logic paper.
-</p>
-</div></li>
-<li><a id="orgheadline42"></a>Topic 1: Reasoning with exceptions; non-binary logic<br  /></li>
-<li><a id="orgheadline43"></a>Topic 2: Reasoning about counterfactuals<br  /></li>
-<li><a id="orgheadline44"></a>Topic 3: Evaluating arguments<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline50" class="outline-4">
-<h4 id="orgheadline50"><span class="section-number-4">3.2.5</span> Day 8 (option 2): Constraint (logic) programming</h4>
-<div class="outline-text-4" id="text-3-2-5">
-</div><ol class="org-ol"><li><a id="orgheadline46"></a>Reading<br  /><div class="outline-text-5" id="text-3-2-5-1">
-<p>
-Original papers on CLP.
-</p>
-</div></li>
-<li><a id="orgheadline47"></a>Topic 1: Constraint satisfaction problems<br  /></li>
-<li><a id="orgheadline48"></a>Topic 2: Constraint propagation and CHR<br  /></li>
-<li><a id="orgheadline49"></a>Topic 3: Conflict-driven learning<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline54" class="outline-4">
-<h4 id="orgheadline54"><span class="section-number-4">3.2.6</span> Day 9: Probabilistic Logic</h4>
-<div class="outline-text-4" id="text-3-2-6">
-</div><ol class="org-ol"><li><a id="orgheadline51"></a>Topic 1: Basic probability<br  /></li>
-<li><a id="orgheadline52"></a>Topic 2: Probabilistic inference<br  /></li>
-<li><a id="orgheadline53"></a>Topic 3: Bayes theorem<br  /></li></ol>
-</div>
-</div>
-<div id="outline-container-orgheadline72" class="outline-3">
-<h3 id="orgheadline72"><span class="section-number-3">3.3</span> Machine Learning</h3>
-<div class="outline-text-3" id="text-3-3">
-</div><div id="outline-container-orgheadline59" class="outline-4">
-<h4 id="orgheadline59"><span class="section-number-4">3.3.1</span> Day 10: Machine learning as function approximation</h4>
-<div class="outline-text-4" id="text-3-3-1">
-</div><ol class="org-ol"><li><a id="orgheadline56"></a>Topic 1: Error minimization and regression<br  /></li>
-<li><a id="orgheadline57"></a>Topic 2: Naive Bayes<br  /></li>
-<li><a id="orgheadline58"></a>Topic 3: Perceptrons<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline64" class="outline-4">
-<h4 id="orgheadline64"><span class="section-number-4">3.3.2</span> Day 11: (Recurrent) Neural Networks</h4>
-<div class="outline-text-4" id="text-3-3-2">
-</div><ol class="org-ol"><li><a id="orgheadline60"></a>Reading<br  /><div class="outline-text-5" id="text-3-3-2-1">
-<p>
-"The Unreasonable Effectiveness of RNNs" (Blog post)
-</p>
-</div></li>
-<li><a id="orgheadline61"></a>Topic 1: Neural networks<br  /></li>
-<li><a id="orgheadline62"></a>Topic 2: Image recognition and convolution<br  /></li>
-<li><a id="orgheadline63"></a>Topic 3: String-to-string translation<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline69" class="outline-4">
-<h4 id="orgheadline69"><span class="section-number-4">3.3.3</span> Day 12: Deep Learning</h4>
-<div class="outline-text-4" id="text-3-3-3">
-</div><ol class="org-ol"><li><a id="orgheadline65"></a>Reading<br  /><div class="outline-text-5" id="text-3-3-3-1">
-<p>
-Primary sources on deep neural networks
-</p>
-</div></li>
-<li><a id="orgheadline66"></a>Topic 1: Deep neural networks<br  /></li>
-<li><a id="orgheadline67"></a>Topic 2: Deep Reinforcement Learning<br  /></li>
-<li><a id="orgheadline68"></a>Topic 3: Generative methods<br  /></li></ol>
-</div>
-<div id="outline-container-orgheadline70" class="outline-4">
-<h4 id="orgheadline70"><span class="section-number-4">3.3.4</span> Day 13: Presentations 1. New directions in AI.</h4>
-</div>
-<div id="outline-container-orgheadline71" class="outline-4">
-<h4 id="orgheadline71"><span class="section-number-4">3.3.5</span> Day 14: Presentations 2.</h4>
-</div>
-</div>
+<blockquote>
+<p>“It’s part of the history of the field of artificial intelligence that every time somebody figured out how to make a computer do something—play good checkers, solve simple but relatively informal problems—there was a chorus of critics to say,”that’s not thinking“… Practical AI successes, computational programs that actually achieved intelligent behavior, were soon assimilated into whatever application domain they were found to be useful in, and became silent partners alongside other problem-solving approaches, which left AI researchers to deal only with the”failures,&quot; the tough nuts that couldn’t yet be cracked.&quot; <span class="citation">(McCorduck 2004)</span></p>
+</blockquote>
+<p>This course surveys the field of artificial intelligence and its two main threads: symbolic/knowledge-based and statistical/machine-learning approaches. We will pay special attention to how AI systems reflect and reify not just the knowledge of their creators, but also their values and implicit biases. In recent years we have seen a proliferation of AI systems that filter news feeds, hyper-target advertisements, act as personal assistants, determine apartment rental rates, and even attempt to identify suspected terrorists or decide parole terms and sentencing. Whenever we build an AI system, we choose how to represent the world and the problem we want to solve, and this decision must consider ethics as much as the performance of the resulting algorithm. On the positive side, if AI systems can encode values, then we can also use them to creative or socially beneficial ends! AI systems can generate novel stories and works of art, provide compelling opponents in games, and personalize education for individual learners.</p>
+<p>This course will engage with active research in deep learning, computational creativity, video game AI, natural language understanding, and the ethics of AI. Students will learn the core principles of AI with worked examples, writing programs in Prolog and Python to apply the techniques shown in lectures and readings. We will also critically analyze commercial and research AI projects to understand how they function (building smaller versions on the way), the extent to which they are successful at their stated aims, how they fit into the history of AI, and what they say about their creators and society at large.</p>
+<h1 id="objective">Objective</h1>
+<p>Students will finish the course with an appreciation of the ethical, social, and historical aspects of artificial intelligence, as well as concrete experience building small AI systems in two radically different programming environments. Automated algorithmic decision-making is only becoming more pervasive, and this course should prepare students to observe, critique, create, and (potentially) counteract such systems.</p>
+<h1 id="format">Format</h1>
+<p>Each day’s lecture will be broken up into three main topics. The morning schedule will generally follow this pattern:</p>
+<ul>
+<li>9:00-9:15: Introductions and logistics. Q&amp;A for previous day’s reading or work.</li>
+<li>9:15-9:35: The first topic of the morning.</li>
+<li>9:35-9:45: A small group exercise, followed by a short break.</li>
+<li>9:50-10:00: Review and discussion of the results of the exercise.</li>
+<li>10:00-10:30: The second topic of the morning.</li>
+<li>10:40-11:10: The third topic of the morning.</li>
+<li>11:10-11:30: Introduction to the day’s assignment. Q&amp;A.</li>
+</ul>
+<p>Each day will have a reading along with a programming assignment. There will also be a final project comprising either a larger AI programming project or a research paper deeply or broadly exploring some AI system(s), topic(s), or technique(s). This final project may be tackled alone or in a group of no more than 3 students.</p>
+<p>Coursework will be submitted via GitHub, and on the first day we will ensure that all students have an account with the service. An understanding of version control is vital for working on software projects in teams, and this will also give us a persistent record of project work suitable for use in portfolios or to share with family and friends.</p>
+<h1 id="topics">Topics</h1>
+<p>This course will move very quickly. Each week we will consider four or five topics. Each topic stands as a milestone in a particular tradition, and most remain active research areas—in fact, each would justify a three-week course on its own!</p>
+<ul>
+<li>Foundations
+<ul>
+<li>What is AI?</li>
+<li>Critical technical practice</li>
+<li>Introduction to Python programming</li>
+<li>State machines and basic CS theory</li>
+<li>Search, planning, and game AI</li>
+</ul></li>
+<li>Statistical techniques
+<ul>
+<li>Probabilistic programming
+<ul>
+<li>Probabilistic inference</li>
+<li>Bayes Theorem</li>
+</ul></li>
+<li>Machine learning as function approximation
+<ul>
+<li>Error minimization and regression</li>
+<li>Perceptrons</li>
+</ul></li>
+<li>Deep Neural Networks</li>
+<li>Recurrent Neural Networks</li>
+</ul></li>
+<li>Knowledge-based techniques
+<ul>
+<li>Introduction to logic and Prolog programming</li>
+<li>Rule-based systems and grammars</li>
+<li>Planning with logic</li>
+<li>Non-monotonic logics</li>
+</ul></li>
+</ul>
+<h1 id="project-ideas">Project ideas</h1>
+<ul>
+<li>Game-related AI
+<ul>
+<li>Video game character AI</li>
+<li>Guess game from level, generate level given game</li>
+<li>GVGAI Competition bot</li>
+<li>Learn game rules (GDL/VGDL) from forward model</li>
+</ul></li>
+<li>General AI
+<ul>
+<li>Source repository mining/bug prediction</li>
+<li>Any Kaggle competition</li>
+<li>An expert system for some diagnosis or support task</li>
+</ul></li>
+<li>…</li>
+</ul>
+<h1 id="references" class="unnumbered">References</h1>
+<div id="refs" class="references">
+<div id="ref-McCorduck:2004:MTP:983115">
+<p>McCorduck, Pamela. 2004. <em>Machines Who Think: A Personal Inquiry into the History and Prospects of Artificial Intelligence</em>. AK Peters Ltd.</p>
 </div>
 </div>
 </body>
