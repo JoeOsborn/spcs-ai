@@ -14,33 +14,42 @@
 <h2 class="author">Joseph C. Osborn</h2>
 </div>
 <p>This document is intended for use by the instructor and TAs, since we don’t want to commit to a firm schedule or show the readings/assignments too far in advance (it might be confusing).</p>
-<p><strong>Todo: big open question is whether to bring in machine learning stuff earlier, though I think the logic stuff is important… maybe preview it in the first week and move the probabilistic stuff earlier? pymc3?</strong></p>
 <ul>
 <li>Day 1: What is AI?
 <ul>
 <li><dl>
 <dt>Reading</dt>
-<dd>Before doing today’s assignment, students should read a few the excerpts from Philip Agre’s “Computation and Human Experience” as well as the D. Fox Harrell paper in the reader.
+<dd>Before doing today’s assignment, students should read the excerpts from Philip Agre’s “Computation and Human Experience” as well as the D. Fox Harrell paper in the reader.
 </dd>
 </dl></li>
 <li><dl>
 <dt>Topic 1: What is AI?</dt>
+<dd>Hi, who am I?
+</dd>
 <dd>Introduction to main threads of AI research. What is and is not AI. Historical and present uses of the term. AI winter. Sidestepping “what is ‘intelligence’”? Creative and commercial uses of AI. Generative methods. Modern AI as a set of techniques, rather than an attempt to simulate the brain. “Getting good results” vs “learning/claiming something about cognition”.
 </dd>
-<dd>(Include some Game AI, some mixed initiative stuff, some of my research area here.)
+<dd>(If possible, include some Game AI, some mixed initiative stuff (Tanagra), some of my research area here.)
+</dd>
+<dd>Grammars, logical systems, argumentation, social simulations, …
+</dd>
+<dd>Expense, fragility, rhetorical purpose, …
+</dd>
+<dd>Genetic algorithms/programming, neural nets, machine learning, …
+</dd>
+<dd>Choice of loss function, metrics, overfitting, “money laundering for bias” …
 </dd>
 </dl></li>
 <li><dl>
 <dt>Exercise</dt>
-<dd>Identify three AI systems. For each one, discuss and decide whether it is mainly knowledge-based or mainly machine-learning-based.
+<dd>Identify three “AI” systems. For each one, discuss and decide whether it is mainly knowledge-based or mainly statistical/machine-learning-based.
 </dd>
 </dl></li>
 <li><dl>
 <dt>Topic 2: Critical Technical Practice &amp; the Ethics of AI</dt>
-<dd>Explication of Agre’s approach to AI. Examples from recent high-profile AI incidents including Microsoft’s “Tay” chatbot, noise-based attacks on Google’s image classifiers, MaxMind’s IP mapping, Facebook’s algorithmic feed emotion manipulation research.
+<dd>Explanation of Agre’s and Harrell’s work. Examples from recent high-profile AI incidents including Microsoft’s “Tay” chatbot, noise-based attacks on Google’s image classifiers, MaxMind’s IP mapping, Facebook’s algorithmic feed emotion manipulation research, automated sentencing/parole…
 </dd>
 </dl></li>
-<li><p>Topic 3: How to submit assignments. Q&amp;A.</p></li>
+<li><p>Topic 3: IPython. How to submit assignments. Q&amp;A.</p></li>
 <li><dl>
 <dt>Assignment 1</dt>
 <dd>Individual (short) assignment.
@@ -53,7 +62,8 @@
 <dd>Individual (short) assignment.
 </dd>
 </dl>
-Be sure you can run a simple IPython “hello world”-type example. Submit such a notebook.</li>
+<p>Submit an IPython notebook with a Markdown cell briefly introducing yourself: your background in programming and/or AI, what you hope to gain from this course, and your favorite hobby or hobbies outside of programming (and even outside of computing).</p>
+Also include a Python cell which prints out your name using the <code>print()</code> function.</li>
 </ul></li>
 <li>Day 2: Python, data structures, and algorithms
 <ul>
@@ -92,52 +102,33 @@ Be sure you can run a simple IPython “hello world”-type example. Submit such
 </ol>
 <em>(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate mazes, visualize the path-finding algorithms.)</em></li>
 </ul></li>
-<li>Day 4: Overview of knowledge-based and machine-learning methods.
+<li>Day 4: Probabilistic programming
 <ul>
 <li><strong>Note: also need to do intermediate evaluations at the end of the day</strong></li>
-<li>Reading</li>
-<li><dl>
-<dt>Topic 1: Expert systems</dt>
-<dd>Grammars, logical systems, argumentation, social simulations, …
-</dd>
-<dd>Expense, fragility, rhetorical purpose, …
-</dd>
-</dl></li>
-<li><dl>
-<dt>Topic 2: Statistical methods</dt>
-<dd>Genetic algorithms/programming, neural nets, machine learning, …
-</dd>
-<dd>Choice of loss function, metrics, overfitting, “money laundering for bias” …
-</dd>
-</dl></li>
+<li>Topic 1: Basic probability/Bayes rule</li>
+<li>Topic 2: Probabilistic programming (pymc3)</li>
 <li>Topic 3: Let’s talk about projects</li>
 <li><dl>
-<dt>Assignment</dt>
+<dt>Assignment 1</dt>
 <dd>Individual (small) assignment.
 </dd>
 </dl>
 Give me a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well.</li>
-</ul></li>
-<li>Day 5: Probabilistic programming
-<ul>
-<li>Topic 1: Basic probability/Bayes rule</li>
-<li>Topic 2: Probabilistic programming (pymc3)</li>
-<li>Topic 3: Naive Bayes classifiers</li>
 <li><dl>
-<dt>Assignment:</dt>
-<dd>Individual or pair (longer) assignment
+<dt>Assignment 2</dt>
+<dd>Individual or pair (medium-length) assignment
 </dd>
 </dl>
-Write a probabilistic program that does something, maybe with unreliable data input, in pymc3. Creative AI, puzzle solving, game character behavior, …?</li>
+Write a probabilistic program that generates/runs/solves/represents/etc the mazes from before? Or somehow relates to the MCTS stuff?</li>
 </ul></li>
-<li>Day 6: Machine learning as function approximation
+<li>Day 5: Machine learning as function approximation
 <ul>
 <li>Topic 1: Error minimization and regression/gradient descent
 <ul>
 <li>Overfitting, linearity, curse of dimensionality …</li>
 </ul></li>
-<li>Topic 2: Perceptrons</li>
-<li>Topic 3: Perceptron networks</li>
+<li>Topic 2: Naive Bayes classifiers</li>
+<li>Topic 3: Perceptrons</li>
 <li><dl>
 <dt>Assignment:</dt>
 <dd>Write a perceptron or simple NN, classify something. We’ll need to provide data sets!
@@ -145,7 +136,7 @@ Write a probabilistic program that does something, maybe with unreliable data in
 </dl></li>
 </ul></li>
 <li><dl>
-<dt>Day 7: Deep Neural Networks</dt>
+<dt>Day 6: Deep Neural Networks</dt>
 <dd><strong>Note: need to finalize projects</strong>
 <ul>
 <li><dl>
@@ -158,15 +149,15 @@ Write a probabilistic program that does something, maybe with unreliable data in
 <li>Topic 3: Auto-encoders</li>
 <li><dl>
 <dt>Assignment:</dt>
-<dd>Write a string to string thing or image classifier or char-level RNN thing? Dataset cleaning practice? Tension: learning times…
+<dd>Write a image classifier or auto encoder?
 </dd>
 </dl></li>
 </ul>
 </dd>
 </dl></li>
-<li>Day 8: Recurrent Neural Networks
+<li>Day 7: Recurrent Neural Networks
 <ul>
-<li><em>Finalize project ideas by end of today!</em></li>
+<li><em>Finalize project ideas by end of today! or tomorrow!</em></li>
 <li><dl>
 <dt>Reading</dt>
 <dd>“The Unreasonable Effectiveness of RNNs” (Blog post)
@@ -177,9 +168,21 @@ Write a probabilistic program that does something, maybe with unreliable data in
 <li>Topic 3: Deep Reinforcement Learning</li>
 <li><dl>
 <dt>Assignment:</dt>
-<dd>Write a style transfer thing or auto encoder or deep RL game player?
+<dd>Write a style transfer thing or string to string thing?
 </dd>
 </dl></li>
+</ul></li>
+<li>Day 8: Formal Logic &amp; Prolog Crash Course
+<ul>
+<li>Topic 1: Propositional logic and inference</li>
+<li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.</li>
+<li>Topic 3: Knowledge bases</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Individual (medium-length) assignment.
+</dd>
+</dl>
+Todo: Some kind of knowledge base or expert system… or a maze generator-cum-solver… or something that shows how much more compact Prolog programs can be than Python ones? Two part thing with one part today and one part Monday (day 10). Or some of the 99 prolog problems?</li>
 </ul></li>
 <li>Day 9: Creative AI
 <ul>
@@ -197,18 +200,18 @@ Write a probabilistic program that does something, maybe with unreliable data in
 <p>Make a Tracery grammar to generate some interesting artifact: Genre stories, TV episodes, SVG images, Emoji compositions, musical leitmotifs, classified ads, inspirational quotes, fantasy game items, … and put up a Twitter bot with it. Go as far as you can with this.</p>
 <em>Todo:elaborate.</em></li>
 </ul></li>
-<li>Day 10: Formal Logic &amp; Prolog Crash Course
+<li>Day 10: Solving problems with logic
 <ul>
-<li>Topic 1: Propositional logic and inference</li>
-<li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.</li>
-<li>Topic 3: Planning with temporal logic and the event calculus. General game playing.</li>
+<li>Topic 1: Planning with temporal logic and the event calculus. General game playing.</li>
+<li>Topic 2: List/tree processing and meta-interpreters</li>
+<li>Topic 3: DCGs?</li>
 <li><dl>
 <dt>Assignment:</dt>
-<dd>Individual (short) assignment.
+<dd>Individual or pair (short) assignment.
 </dd>
-</dl>
-<p>Todo: Some kind of knowledge base or expert system… or a maze generator-cum-solver… or something that shows how much more compact Prolog programs can be than Python ones?</p>
-GGP something something?</li>
+<dd>symbolic manipulation stuff, NLP, …?
+</dd>
+</dl></li>
 </ul></li>
 <li>Day 11: Argumentation and Non-Monotonic Logics
 <ul>

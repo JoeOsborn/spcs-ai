@@ -10,8 +10,13 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Reading
         ~ Before doing today's assignment, students should read the excerpts from Philip Agre's "Computation and Human Experience" as well as the D.\ Fox Harrell paper in the reader.
     * Topic 1: What is AI?
+        ~ Hi, who am I?
         ~ Introduction to main threads of AI research. What is and is not AI. Historical and present uses of the term. AI winter. Sidestepping "what is 'intelligence'"? Creative and commercial uses of AI. Generative methods. Modern AI as a set of techniques, rather than an attempt to simulate the brain. "Getting good results" vs "learning/claiming something about cognition".
         ~ (If possible, include some Game AI, some mixed initiative stuff (Tanagra), some of my research area here.)
+        ~ Grammars, logical systems, argumentation, social simulations, ...
+        ~ Expense, fragility, rhetorical purpose, ...
+        ~ Genetic algorithms/programming, neural nets, machine learning, ...
+        ~ Choice of loss function, metrics, overfitting, "money laundering for bias" ...
     * Exercise
         ~ Identify three "AI" systems.
         For each one, discuss and decide whether it is mainly knowledge-based or mainly statistical/machine-learning-based.
@@ -36,7 +41,9 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Assignment 2
         ~ Individual (short) assignment.
 
-        Be sure you can run a simple IPython "hello world"-type example. Submit such a notebook.
+        Submit an IPython notebook with a Markdown cell briefly introducing yourself: your background in programming and/or AI, what you hope to gain from this course, and your favorite hobby or hobbies outside of programming (and even outside of computing).
+
+        Also include a Python cell which prints out your name using the `print()` function.
 * Day 2: Python, data structures, and algorithms
     * Topic 1: Building and processing interesting data structures
     * Topic 2: State machines and string recognizers
@@ -65,36 +72,27 @@ This document is intended for use by the instructor and TAs, since we don't want
         (3) Do (2) but with reinforcement learning. Compare state-value vs action-value learning vs MCTS in terms of iterations required to reach a certain score, etc.
 
         *(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate mazes, visualize the path-finding algorithms.)*
-* Day 4: Overview of knowledge-based and machine-learning methods.
+* Day 4: Probabilistic programming
     * __Note: also need to do intermediate evaluations at the end of the day__
-    * Reading
-    * Topic 1: Expert systems
-        ~ Grammars, logical systems, argumentation, social simulations, ...
-        ~ Expense, fragility, rhetorical purpose, ...
-    * Topic 2: Statistical methods
-        ~ Genetic algorithms/programming, neural nets, machine learning, ...
-        ~ Choice of loss function, metrics, overfitting, "money laundering for bias" ...
+    * Topic 1: Basic probability/Bayes rule
+    * Topic 2: Probabilistic programming (pymc3)
     * Topic 3: Let's talk about projects
-    * Assignment
+    * Assignment 1
         ~ Individual (small) assignment.
 
         Give me a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well.
-* Day 5: Probabilistic programming
-    * Topic 1: Basic probability/Bayes rule
-    * Topic 2: Probabilistic programming (pymc3)
-    * Topic 3: Naive Bayes classifiers
-    * Assignment:
-        ~ Individual or pair (longer) assignment
+    * Assignment 2
+        ~ Individual or pair (medium-length) assignment
 
-        Write a probabilistic program that does something, maybe with unreliable data input, in pymc3. Creative AI, puzzle solving, game character behavior, ...?
-* Day 6: Machine learning as function approximation
+        Write a probabilistic program that generates/runs/solves/represents/etc the mazes from before? Or somehow relates to the MCTS stuff?
+* Day 5: Machine learning as function approximation
     * Topic 1: Error minimization and regression/gradient descent
         * Overfitting, linearity, curse of dimensionality ...
-    * Topic 2: Perceptrons
-    * Topic 3: Perceptron networks
+    * Topic 2: Naive Bayes classifiers
+    * Topic 3: Perceptrons
     * Assignment:
         ~ Write a perceptron or simple NN, classify something. We'll need to provide data sets!
-* Day 7: Deep Neural Networks
+* Day 6: Deep Neural Networks
     ~ __Note: need to finalize projects__
     * Reading
         ~ Primary sources on deep neural networks
@@ -102,16 +100,24 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Topic 2: Image recognition and convolution
     * Topic 3: Auto-encoders
     * Assignment:
-        ~ Write a string to string thing or image classifier or char-level RNN thing? Dataset cleaning practice? Tension: learning times...
-* Day 8: Recurrent Neural Networks
-    * _Finalize project ideas by end of today!_
+        ~ Write a image classifier or auto encoder?
+* Day 7: Recurrent Neural Networks
+    * _Finalize project ideas by end of today! or tomorrow!_
     * Reading
         ~ "The Unreasonable Effectiveness of RNNs" (Blog post)
     * Topic 1: String-to-string translation
     * Topic 2: Style Transfer
     * Topic 3: Deep Reinforcement Learning
     * Assignment:
-        ~ Write a style transfer thing or auto encoder or deep RL game player?
+        ~ Write a style transfer thing or string to string thing?
+* Day 8: Formal Logic \& Prolog Crash Course
+    * Topic 1: Propositional logic and inference
+    * Topic 2: Prolog and proof search. "Old school" symbolic AI stuff.
+    * Topic 3: Knowledge bases
+    * Assignment:
+        ~ Individual (medium-length) assignment.
+
+        Todo: Some kind of knowledge base or expert system... or a maze generator-cum-solver... or something that shows how much more compact Prolog programs can be than Python ones? Two part thing with one part today and one part Monday (day 10). Or some of the 99 prolog problems?
 * Day 9: Creative AI
     * Reading
         ~ Generative Methods paper [@compton2013generative] and Kate's PCG blog.
@@ -122,16 +128,13 @@ This document is intended for use by the instructor and TAs, since we don't want
         Make a Tracery grammar to generate some interesting artifact: Genre stories, TV episodes, SVG images, Emoji compositions, musical leitmotifs, classified ads, inspirational quotes, fantasy game items, ... and put up a Twitter bot with it. Go as far as you can with this.
 
         *Todo:elaborate.*
-* Day 10: Formal Logic \& Prolog Crash Course
-    * Topic 1: Propositional logic and inference
-    * Topic 2: Prolog and proof search. "Old school" symbolic AI stuff.
-    * Topic 3: Planning with temporal logic and the event calculus. General game playing.
+* Day 10: Solving problems with logic
+    * Topic 1: Planning with temporal logic and the event calculus. General game playing.
+    * Topic 2: List/tree processing and meta-interpreters
+    * Topic 3: DCGs?
     * Assignment:
-        ~ Individual (short) assignment.
-
-        Todo: Some kind of knowledge base or expert system... or a maze generator-cum-solver... or something that shows how much more compact Prolog programs can be than Python ones?
-
-        GGP something something?
+        ~ Individual or pair (short) assignment.
+        ~ symbolic manipulation stuff, NLP, ...?
 * Day 11: Argumentation and Non-Monotonic Logics
     * Reading
         ~ At least Nute's defeasible logic paper.
