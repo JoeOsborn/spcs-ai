@@ -4,4 +4,4 @@ Submit an IPython notebook with a Markdown cell briefly introducing yourself: yo
 
 Also include a Python cell which prints out your name using the `print()` function, or does some other thing you find interesting or entertaining.
 
-Put your notebooks here: `lastname.ipynb`.
+Put your notebooks here: `Shen.ipynb`.
