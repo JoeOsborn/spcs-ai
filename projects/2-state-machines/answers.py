@@ -1,3 +1,36 @@
+# Don't read me until you're totally stuck!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Assignment 1-1
 def check(sm, string):
     for s in string:
