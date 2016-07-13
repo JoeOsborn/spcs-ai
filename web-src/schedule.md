@@ -78,9 +78,11 @@ This document is intended for use by the instructor and TAs, since we don't want
         * "Inspired by" (behavior trees, ...)
     * Exercise:
         * Pair up
-        * Pick an agent from your experience (video game character, routine worker, animal, robot, ...) and write out (possibly repetitive) sequences of actions they might perform (it's okay to indicate cycles or similar with "..." or what-have-you)
+        * Pick an agent from your experience (video game character, routine worker, animal, robot, ...) and write out (possibly repetitive) sequences of actions they might perform (it's okay to indicate cycles or similar with "..." or what-have-you) OR pick a string language and enumerate examples
+        * What are the "letters"---basic actions---and what are the states?
         * Draw a state machine that captures that language of actions
     * Topic 3: Graph traversal
+        * (Quick: state machine implementation strategies)
         * Basic graph theory (trees)
         * Depth-first vs breadth-first
             * Ask for pseudocode (recursive AND iterative)
