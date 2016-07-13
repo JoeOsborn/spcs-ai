@@ -25,7 +25,12 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Topic 2: Critical Technical Practice \& the Ethics of AI
         ~ Explanation of Agre's and Harrell's work. Examples from recent high-profile AI incidents including Microsoft's "Tay" chatbot, noise-based attacks on Google's image classifiers, MaxMind's IP mapping, Facebook's algorithmic feed emotion manipulation research, automated sentencing/parole...
     * Topic 3: IPython. How to submit assignments. Q\&A.
-
+    * What worked:
+        * AI and ethics examples, group activity, pretty much every active learning segment got some response except "name some AI techniques", ethics material.
+    * What didn't work:
+        * Arriving late (ugh), rushing through critical technical practice material.
+    * What to change for next time:
+        * More active learning and student-driven exampling, less lecture, shorter reading addressed across more days.
     * Assignment 1
         ~ Individual (short) assignment.
 
@@ -48,16 +53,53 @@ This document is intended for use by the instructor and TAs, since we don't want
         Also include a Python cell which prints out your name using the `print()` function.
 * Day 2: Python, data structures, and algorithms
     * Topic 1: Building and processing interesting data structures
+        * Get students to do the typing as much as possible
+        * Python basics
+            * Print each number between 1 and 10
+                * for x in range
+            * Functions with ordered and keyword arguments
+            * Draw an image in IPython
+            * Random numbers
+        * Tuples, arrays, dicts
+            * reverse a list, animal sounds
+            * plot a graph in IPython
+            * For x in y
+        * Classes
+            * define and use custom objects
+            * animal sounds 2---but don't worry about inheritance for now, just polymorphism and info hiding
+        * Iterative functions (and stacks/queues/pointers)
+        * Recursive functions (and accumulators)
     * Topic 2: State machines and string recognizers
+        * CS theory basics
+        * Languages, intersection and union
+        * Finite (word) automata
+        * Deterministic vs nondeterministic
+        * Extensions (symbolic FA, pushdown automata, counter automata, timed automata)
+        * "Inspired by" (behavior trees, ...)
+    * Exercise:
+        * Pair up
+        * Pick an agent from your experience (video game character, routine worker, animal, robot, ...) and write out (possibly repetitive) sequences of actions they might perform (it's okay to indicate cycles or similar with "..." or what-have-you)
+        * Draw a state machine that captures that language of actions
     * Topic 3: Graph traversal
+        * Basic graph theory (trees)
+        * Depth-first vs breadth-first
+            * Ask for pseudocode (recursive AND iterative)
+        * Directed graphs, DAGs, and general graphs
+        * Complications for depth- and breadth-first in presence of cycles
+            * Ask for pseudocode (recursive AND iterative)
     * Assignment
         ~ Individual (short) assignment.
-        Write two state machine evaluators for word automata: one which takes a state machine representing a language along with a string, and checks whether the machine accepts the string; and another which takes such a state machine and generates strings from it.
+        Write two state machine evaluators for deterministic finite word automata: one which takes a state machine representing a language along with a string, and checks whether the machine accepts the string; and another which takes such a state machine and generates strings from it.
 
-        *We'll provide the state machine data structures. Students with extra time could write a regular expression parser, or write functions to take the intersection or union of two languages, or visualize the evaluation steps.*
+        *We'll provide the state machine data structures. Students with extra time could write a regular expression parser, or write functions to take the intersection or union of two languages, or visualize the evaluation steps using e.g.\ `pillow`.*
 * Day 3: Search and Planning
     * Reading
-    ~ Excerpts from Sutton \& Barto [-@sutton1998reinforcement] and recent MCTS presentation slides.
+        * Red Blob Games' [A* tutorial](http://www.redblobgames.com/pathfinding/a-star/introduction.html)
+        * Excerpts from Sutton \& Barto's reinforcement learning book [-@sutton1998reinforcement] (available [here](https://webdocs.cs.ualberta.ca/~sutton/book/ebook/the-book.html)):
+            * Sections 1.1--1.5
+            * Section 2.1
+            * Sections 3.1--3.3 (and as much of chapter 3 as you have time for)
+        * At least section 3 ("MONTE CARLO TREE SEARCH") of Cameron Browne et al's [survey of MCTS methods](http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf)
     * Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore.
     * Exercise:
         Pick an interesting problem and try to phrase it as "local search".
