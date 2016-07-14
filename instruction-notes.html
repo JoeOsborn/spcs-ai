@@ -118,11 +118,13 @@ Also include a Python cell which prints out your name using the <code>print()</c
 <li>Exercise:
 <ul>
 <li>Pair up</li>
-<li>Pick an agent from your experience (video game character, routine worker, animal, robot, …) and write out (possibly repetitive) sequences of actions they might perform (it’s okay to indicate cycles or similar with “…” or what-have-you)</li>
+<li>Pick an agent from your experience (video game character, routine worker, animal, robot, …) and write out (possibly repetitive) sequences of actions they might perform (it’s okay to indicate cycles or similar with “…” or what-have-you) OR pick a string language and enumerate examples</li>
+<li>What are the “letters”—basic actions—and what are the states?</li>
 <li>Draw a state machine that captures that language of actions</li>
 </ul></li>
 <li>Topic 3: Graph traversal
 <ul>
+<li>(Quick: state machine implementation strategies)</li>
 <li>Basic graph theory (trees)</li>
 <li>Depth-first vs breadth-first
 <ul>
@@ -133,6 +135,18 @@ Also include a Python cell which prints out your name using the <code>print()</c
 <ul>
 <li>Ask for pseudocode (recursive AND iterative)</li>
 </ul></li>
+</ul></li>
+<li>What worked:
+<ul>
+<li>State machine exercise. Many students knew Python already so that material was successful.</li>
+</ul></li>
+<li>What didn’t work:
+<ul>
+<li>Rushing through tree/graph material, not having a 100% prepared set of examples for Python learning.</li>
+</ul></li>
+<li>What to change for next time:
+<ul>
+<li>More active learning and student-driven exampling, a little less state machine theory material (save it for a subsequent day) and a little more tree/graph material, maybe even before the state machines.</li>
 </ul></li>
 <li><dl>
 <dt>Assignment</dt>
@@ -154,10 +168,22 @@ Also include a Python cell which prints out your name using the <code>print()</c
 </ul></li>
 <li>At least section 3 (“MONTE CARLO TREE SEARCH”) of Cameron Browne et al’s <a href="http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf">survey of MCTS methods</a></li>
 </ul></li>
-<li>Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore.</li>
-<li>Exercise: Pick an interesting problem and try to phrase it as “local search”.</li>
-<li>Topic 2: MCTS and back propagation</li>
-<li>Topic 3: Reinforcement learning</li>
+<li>Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore. Discrete constraint problems too (n-queens). Graph vs grid representations of space.
+<ul>
+<li>Recommend following the links from RedBlobGames’ tutorial as well.</li>
+</ul></li>
+<li>Exercise: Pair up. Pick an interesting problem and try to phrase it as “search” or planning. What are the operators at a given state? What are reward values at the end? Do operators have costs? Etc. Candidates include: transforming mathematical formulae, solving some logic puzzle, graph coloring, cooking…</li>
+<li>Topic 2: MCTS, expected value, and backpropagation of reward
+<ul>
+<li>How do I calculate expected value?</li>
+<li>Tree policy: How do I pick action? uniform random, weighted random, random among untried possibilities, … balancing exploit/explore</li>
+<li>Default policy: How do I pick action? Want to explore as much as possible?</li>
+<li>Backpropagation: max, decay, …</li>
+</ul></li>
+<li>Topic 3: Reinforcement learning: the problem, the basic idea, how it differs from MCTS (MCTS is a special case)
+<ul>
+<li>“MCTS estimates temporary state values in order to decide the next move, whereas TDL learns the long-term value of each state that then guides future behaviour”—mcts guesses more</li>
+</ul></li>
 <li><dl>
 <dt>Assignment</dt>
 <dd>Individual or pair (long) assignment. (1) should be done by tomorrow, (2) and (3) by Monday.
@@ -172,11 +198,11 @@ Also include a Python cell which prints out your name using the <code>print()</c
 </ol>
 <em>(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate mazes, visualize the path-finding algorithms.)</em></li>
 </ul></li>
-<li>Day 4: Probabilistic programming
+<li>Day 4: Intelligent agents (also, intro to probability)
 <ul>
 <li><strong>Note: also need to do intermediate evaluations at the end of the day</strong></li>
 <li>Topic 1: Basic probability/Bayes rule</li>
-<li>Topic 2: Probabilistic programming (pymc3)</li>
+<li>Topic 2: Agent architectures</li>
 <li>Topic 3: Let’s talk about projects</li>
 <li><dl>
 <dt>Assignment 1</dt>
@@ -189,7 +215,7 @@ Give me a list of three or more project ideas you might be interested in doing, 
 <dd>Individual or pair (medium-length) assignment
 </dd>
 </dl>
-Write a probabilistic program that generates/runs/solves/represents/etc the mazes from before? Or somehow relates to the MCTS stuff?</li>
+Write some knowledge-based agents for the maze assignments. Maybe an adversary and a player character? Make the MCTS/RL compete against the adversary? Make adversaries for each other’s things?</li>
 </ul></li>
 <li>Day 5: Machine learning as function approximation
 <ul>

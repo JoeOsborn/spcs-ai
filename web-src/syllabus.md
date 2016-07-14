@@ -74,11 +74,13 @@ Each topic stands as a milestone in a particular tradition, and most remain acti
 
 * Game-related AI
     * Video game character AI/social simulation
+    * Automated "Heads Up" player
     * Guess game from level, generate level given game
     * GVGAI competition bot (or Arcade Learning Environment)
     * Learn game rules (GDL/VGDL) from forward model
     * Survey or deep-dive papers from recent AIIDE/EXAG/CIG/TCIAIG etc conferences/workshops/journals
     * Deep analysis/historical study/etc of some game AI system(s) or survey of techniques
+    * ...
 * General AI
     * Source repository mining/bug prediction
     * Any Kaggle competition
@@ -86,5 +88,6 @@ Each topic stands as a milestone in a particular tradition, and most remain acti
         * Or for playing Heads Up?
     * Survey or deep-dive papers from recent AAAI/IJCAI/NIPS/etc conferences or arxiv publications in machine learning/AI/etc
     * Deep analysis/historical study/etc of some AI system(s) or survey of techniques
+    * ...
 
 #References
