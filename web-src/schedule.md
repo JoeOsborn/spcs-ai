@@ -89,6 +89,12 @@ This document is intended for use by the instructor and TAs, since we don't want
         * Directed graphs, DAGs, and general graphs
         * Complications for depth- and breadth-first in presence of cycles
             * Ask for pseudocode (recursive AND iterative)
+    * What worked:
+        * State machine exercise. Many students knew Python already so that material was successful.
+    * What didn't work:
+        * Rushing through tree/graph material, not having a 100% prepared set of examples for Python learning.
+    * What to change for next time:
+        * More active learning and student-driven exampling, a little less state machine theory material (save it for a subsequent day) and a little more tree/graph material, maybe even before the state machines.
     * Assignment
         ~ Individual (short) assignment.
         Write two state machine evaluators for deterministic finite word automata: one which takes a state machine representing a language along with a string, and checks whether the machine accepts the string; and another which takes such a state machine and generates strings from it.
