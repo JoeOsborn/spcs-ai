@@ -89,6 +89,12 @@ This document is intended for use by the instructor and TAs, since we don't want
         * Directed graphs, DAGs, and general graphs
         * Complications for depth- and breadth-first in presence of cycles
             * Ask for pseudocode (recursive AND iterative)
+    * What worked:
+        * State machine exercise. Many students knew Python already so that material was successful.
+    * What didn't work:
+        * Rushing through tree/graph material, not having a 100% prepared set of examples for Python learning.
+    * What to change for next time:
+        * More active learning and student-driven exampling, a little less state machine theory material (save it for a subsequent day) and a little more tree/graph material, maybe even before the state machines.
     * Assignment
         ~ Individual (short) assignment.
         Write two state machine evaluators for deterministic finite word automata: one which takes a state machine representing a language along with a string, and checks whether the machine accepts the string; and another which takes such a state machine and generates strings from it.
@@ -102,11 +108,17 @@ This document is intended for use by the instructor and TAs, since we don't want
             * Section 2.1
             * Sections 3.1--3.3 (and as much of chapter 3 as you have time for)
         * At least section 3 ("MONTE CARLO TREE SEARCH") of Cameron Browne et al's [survey of MCTS methods](http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf)
-    * Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore.
+    * Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore. Discrete constraint problems too (n-queens). Graph vs grid representations of space.
+        * Recommend following the links from RedBlobGames' tutorial as well.
     * Exercise:
-        Pick an interesting problem and try to phrase it as "local search".
-    * Topic 2: MCTS and back propagation
-    * Topic 3: Reinforcement learning
+        Pair up. Pick an interesting problem and try to phrase it as "search" or planning. What are the operators at a given state? What are reward values at the end? Do operators have costs? Etc. Candidates include: transforming mathematical formulae, solving some logic puzzle, graph coloring, cooking...
+    * Topic 2: MCTS, expected value, and backpropagation of reward
+        * How do I calculate expected value?
+        * Tree policy: How do I pick action? uniform random, weighted random, random among untried possibilities, ... balancing exploit/explore
+        * Default policy: How do I pick action? Want to explore as much as possible?
+        * Backpropagation: max, decay, ...
+    * Topic 3: Reinforcement learning: the problem, the basic idea, how it differs from MCTS (MCTS is a special case)
+        * "MCTS estimates temporary state values in order to decide the next move, whereas TDL learns the long-term value of each state that then guides future behaviour"---mcts guesses more
     * Assignment
         ~ Individual or pair (long) assignment. (1) should be done by tomorrow, (2) and (3) by Monday.
         (1) Write a Python program to solve switch and door puzzles with one of the heuristic search algorithms
@@ -118,10 +130,10 @@ This document is intended for use by the instructor and TAs, since we don't want
         (3) Do (2) but with reinforcement learning. Compare state-value vs action-value learning vs MCTS in terms of iterations required to reach a certain score, etc.
 
         *(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate mazes, visualize the path-finding algorithms.)*
-* Day 4: Probabilistic programming
+* Day 4: Intelligent agents (also, intro to probability)
     * __Note: also need to do intermediate evaluations at the end of the day__
     * Topic 1: Basic probability/Bayes rule
-    * Topic 2: Probabilistic programming (pymc3)
+    * Topic 2: Agent architectures
     * Topic 3: Let's talk about projects
     * Assignment 1
         ~ Individual (small) assignment.
@@ -130,7 +142,7 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Assignment 2
         ~ Individual or pair (medium-length) assignment
 
-        Write a probabilistic program that generates/runs/solves/represents/etc the mazes from before? Or somehow relates to the MCTS stuff?
+        Write some knowledge-based agents for the maze assignments. Maybe an adversary and a player character? Make the MCTS/RL compete against the adversary? Make adversaries for each other's things?
 * Day 5: Machine learning as function approximation
     * Topic 1: Error minimization and regression/gradient descent
         * Overfitting, linearity, curse of dimensionality ...
