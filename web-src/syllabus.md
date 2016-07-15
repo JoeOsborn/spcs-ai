@@ -73,14 +73,25 @@ Each topic stands as a milestone in a particular tradition, and most remain acti
 #Project ideas
 
 * Game-related AI
-    * Video game character AI
+    * Video game character AI/social simulation
+    * Automated "Heads Up" player
+    * Realtime game AI
     * Guess game from level, generate level given game
-    * GVGAI Competition bot
+    * GVGAI competition bot (or Arcade Learning Environment)
     * Learn game rules (GDL/VGDL) from forward model
+    * Survey or deep-dive papers from recent AIIDE/EXAG/CIG/TCIAIG etc conferences/workshops/journals
+    * Deep analysis/historical study/etc of some game AI system(s) or survey of techniques
+    * ...
 * General AI
     * Source repository mining/bug prediction
     * Any Kaggle competition
-    * An expert system for some diagnosis or support task
-* ...
+    * An AI system (expert system or machine learning) for some diagnosis or support task
+        * Or for playing Heads Up?
+    * Survey or deep-dive papers from recent AAAI/IJCAI/NIPS/etc conferences or arxiv publications in machine learning/AI/etc
+    * Deep analysis/historical study/etc of some AI system(s) or survey of techniques
+    * Use a probabilistic programming language to encode one or more interesting models
+        * E.g. http://webppl.org (book at http://dippl.org), or PyMC3 for Python
+    * Program synthesis --- given a specification or a set of examples or a partially implemented program, come up with a function implementing it
+    * ...
 
 #References
