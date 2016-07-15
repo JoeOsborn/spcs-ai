@@ -88,6 +88,7 @@ Each topic stands as a milestone in a particular tradition, and most remain acti
         * Or for playing Heads Up?
     * Survey or deep-dive papers from recent AAAI/IJCAI/NIPS/etc conferences or arxiv publications in machine learning/AI/etc
     * Deep analysis/historical study/etc of some AI system(s) or survey of techniques
+    * Use a probabilistic programming language to encode one or more interesting models
     * ...
 
 #References
