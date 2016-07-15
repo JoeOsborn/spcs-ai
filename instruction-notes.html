@@ -184,6 +184,19 @@ Also include a Python cell which prints out your name using the <code>print()</c
 <ul>
 <li>“MCTS estimates temporary state values in order to decide the next move, whereas TDL learns the long-term value of each state that then guides future behaviour”—mcts guesses more</li>
 </ul></li>
+<li>What worked:
+<ul>
+<li>Graph search, A* material, MCTS explanation, small-group activity</li>
+</ul></li>
+<li>What didn’t work:
+<ul>
+<li>RL material wasn’t prepared thoroughly enough</li>
+<li>Maze should have been an immutable value object!</li>
+</ul></li>
+<li>What to change:
+<ul>
+<li>Needed more active learning opportunities, more specific RL material, too many different topics in one day (nobody had time to do enough reading).</li>
+</ul></li>
 <li><dl>
 <dt>Assignment</dt>
 <dd>Individual or pair (long) assignment. (1) should be done by tomorrow, (2) and (3) by Monday.
@@ -198,24 +211,102 @@ Also include a Python cell which prints out your name using the <code>print()</c
 </ol>
 <em>(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate mazes, visualize the path-finding algorithms.)</em></li>
 </ul></li>
-<li>Day 4: Intelligent agents (also, intro to probability)
+<li>Day 4: Intro to probability and probabilistic programming
 <ul>
 <li><strong>Note: also need to do intermediate evaluations at the end of the day</strong></li>
-<li>Topic 1: Basic probability/Bayes rule</li>
-<li>Topic 2: Agent architectures</li>
-<li>Topic 3: Let’s talk about projects</li>
+<li>Topic 0: Feedback/notes on yesterday’s assignment
+<ul>
+<li>Ask the TAs for code to let you put Maze objects into sets or use them as keys in dicts. I meant to include that from the start. This lets you avoid tricks like turning the Maze into a string for this purpose.</li>
+<li>NOTE: If you put a Maze into a set or use it as a dict key, don’t modify it at all afterwards (e.g. via <code>move_player</code>, <code>toggle</code>, or setting its variables)! Only clone it and change the clones—otherwise the set/dict will break in super confusing ways.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Should use <code>m.move_player()</code> and <code>m.toggle()</code> to modify game state and not e.g. check if <code>m.grid[y][x] == &quot;#&quot;</code></li>
+<li>Since this is destructive, they should copy the maze using <code>m.clone()</code> before making a move</li>
+<li>They can’t (easily) use a distance grid because switching switches changes which doors are open and closed, so player position doesn’t suffice to represent world state, so:</li>
+<li>They need to track whether a maze has been seen before. One way is to use a set to track seen mazes.</li>
+<li>They need to track the cost and predecessor state along with Maze states. Some ways of doing that include:
+<ul>
+<li>Add <code>cost</code> and <code>predecessor</code> properties to maze objects.</li>
+<li>Include <code>cost</code> and <code>predecessor</code> with the maze in the frontier in a tuple. Of course, using priority queues the tuple’s first element should be <code>g(n) + h(n)</code> where <code>g(n)</code> is the real cost to reach node <code>n</code> and <code>h(n)</code> is the heuristic value (e.g. Manhattan distance from goal) at <code>n</code>.</li>
+<li>Keep a <code>costs</code> dict and a <code>predecessors</code> dict or a <code>best_paths</code> dict keyed by Maze objects.</li>
+</ul></li>
+</ol></li>
+<li>Topic 1: Basic probability/Bayes rule
+<ul>
+<li>what probability of an event means</li>
+<li>P(X) – cases where X happens / all possible cases</li>
+<li>P(X, Y) – cases where both X and Y happen / all possible cases</li>
+<li>If X,Y independent, then P(X,Y) = P(X) P(Y)</li>
+<li>P(X | Y) = P(Y|X) P(X) / P(Y) – or equivalently, P(Y,X) = P(X|Y) P(Y) / P(X)</li>
+<li>Chaining: P(G,S,R)=P(G | S,R) P(S | R) P(R)</li>
+<li>I like the <a href="https://en.wikipedia.org/wiki/Conditional_probability">wikipedia page</a> on conditional probability too</li>
+<li>Bayesian statistics
+<ul>
+<li>Prior (background belief) and posterior (after considering prior) probability</li>
+<li>Not, “What is the chance of X happening”, but “Given my background knowledge/superstition/experience, what is the chance of X happening?”</li>
+<li>Example priors: Uniform/flat prior; or:
+<ul>
+<li>“An example is a prior distribution for the temperature at noon tomorrow. A reasonable approach is to make the prior a normal distribution with expected value equal to today’s noontime temperature, with variance equal to the day-to-day variance of atmospheric temperature, or a distribution of the temperature for that day of the year.”</li>
+</ul></li>
+<li>Priors are really important but we don’t have time to get too deeply into them</li>
+</ul></li>
+<li>Bayes nets</li>
+<li>Given P(X | Y), P(X), and P(Y), we can find P(Y | X) with Bayes rule</li>
+<li>P(X)=“Chance of rain”, P(Y)=“chance of clouds”: “Chance of rain when it’s cloudy = chance of clouds * chance of clouds given rain / chance of rain”</li>
+<li>Bayes nets</li>
+<li>Random variables and expected value
+<ul>
+<li>P(X=x)</li>
+<li>“probability-weighted average of all possible values”</li>
+</ul></li>
+<li>Distributions (normal, poisson, negative binomial), mean/variance, and PDFs</li>
+</ul></li>
+<li>Exercise: Make a bayes net for some situation. It’s okay to use e.g. “low/medium/high” for the probabilities in the tables.</li>
+<li>Topic 2: Probabilistic programming
+<ul>
+<li>Programming with distribution variables</li>
+<li>“probabilistic programming languages extend a well-specified deterministic programming language with primitive constructs for random choice” <span class="citation">(Goodman and Stuhlmüller 2014)</span></li>
+<li>“If we view the semantics of the underlying deterministic language as a map from programs to executions of the program, the semantics of a PPL built on it will be a map from programs to distributions over executions. When the program halts with probability one, this induces a proper distribution over return values.” <span class="citation">(Goodman and Stuhlmüller 2014)</span></li>
+<li>WebPPL examples</li>
+</ul></li>
+<li>Topic 3: Let’s talk about projects
+<ul>
+<li>Project format</li>
+<li>Project suggestions</li>
+</ul></li>
+<li>What went well:
+<ul>
+<li>Basic probability, Bayes nets and exercise, connection to ML, WebPPL</li>
+</ul></li>
+<li>What went poorly:
+<ul>
+<li>Bayes rule. Typo in my notes, stumbled, ended up with a result I couldn’t interpret well.</li>
+</ul></li>
+<li>What to do next time:
+<ul>
+<li>Should have practiced the Bayes Rule part of the lecture specifically!</li>
+<li>Should have had more examples of belief nets in the bag.</li>
+</ul></li>
 <li><dl>
 <dt>Assignment 1</dt>
 <dd>Individual (small) assignment.
 </dd>
 </dl>
-Give me a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well.</li>
+Give me a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well. Submit them (as Markdown <code>.md</code> files) in the folder <code>projects/4-project-ideas</code>.</li>
 <li><dl>
 <dt>Assignment 2</dt>
-<dd>Individual or pair (medium-length) assignment
+<dd>Individual (small) assignment.
 </dd>
 </dl>
-Write some knowledge-based agents for the maze assignments. Maybe an adversary and a player character? Make the MCTS/RL compete against the adversary? Make adversaries for each other’s things?</li>
+Fill out the preliminary evaluation form and send it to a TA. They’ll anonymize them and send them on to me so I can adjust the course based on your feedback. You can find the form in the <code>projects/4-evaluations</code> folder.</li>
+<li>Assignment 3: MCTS and Reinforcement Learning agents for maze solving.</li>
+<li><dl>
+<dt>Assignment 4 (Optional)</dt>
+<dd>Individual or pair (small) assignment.
+</dd>
+</dl>
+<p>Make a probabilistic program expressing your Bayesian model from earlier today. Try to give it a prior based on your intuition, or by loading up a dataset. Either PyMC3 or WebPPL is fine.</p>
+Submit it as an <code>.ipynb</code> or a <code>.wppl</code> file in <code>projects/4-probabilistic</code>.</li>
 </ul></li>
 <li>Day 5: Machine learning as function approximation
 <ul>
@@ -337,6 +428,9 @@ Generate argument trees using a meta-interpreter and evaluate their quality. Pro
 <div id="refs" class="references">
 <div id="ref-compton2013generative">
 <p>Compton, Kate, Joseph C Osborn, and Michael Mateas. 2013. “Generative Methods.” In <em>The Fourth Procedural Content Generation in Games Workshop, PCG</em>. Vol. 1.</p>
+</div>
+<div id="ref-dippl">
+<p>Goodman, Noah D, and Andreas Stuhlmüller. 2014. “The Design and Implementation of Probabilistic Programming Languages.” <a href="http://dippl.org" class="uri">http://dippl.org</a>.</p>
 </div>
 <div id="ref-sutton1998reinforcement">
 <p>Sutton, Richard S, and Andrew G Barto. 1998. <em>Reinforcement Learning: An Introduction</em>. Vol. 1. 1. MIT press Cambridge.</p>
