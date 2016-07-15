@@ -204,6 +204,7 @@ This document is intended for use by the instructor and TAs, since we don't want
 
         Submit it as an `.ipynb` or a `.wppl` file in `projects/4-probabilistic`.
 * Day 5: Machine learning as function approximation
+    * Todo: MCTS/RL recap?
     * Topic 1: Error minimization and regression/gradient descent
         * Overfitting, linearity, curse of dimensionality ...
         * Test set vs validation set, generalizing, overgeneralizing...
