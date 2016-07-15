@@ -155,7 +155,7 @@ This document is intended for use by the instructor and TAs, since we don't want
         * P(X) -- cases where X happens / all possible cases
         * P(X, Y) -- cases where both X and Y happen / all possible cases
         * If X,Y independent, then P(X,Y) = P(X) P(Y)
-        * P(X | Y) = P(X,Y) / P(Y) -- or equivalently, P(X,Y) = P(X|Y) P(Y)
+        * P(X | Y) = P(Y|X) P(X) / P(Y) -- or equivalently, P(Y,X) = P(X|Y) P(Y) / P(X)
         * Chaining: P(G,S,R)=P(G | S,R) P(S | R) P(R)
         * I like the [wikipedia page](https://en.wikipedia.org/wiki/Conditional_probability) on conditional probability too
         * Bayesian statistics
@@ -167,6 +167,7 @@ This document is intended for use by the instructor and TAs, since we don't want
         * Bayes nets
         * Given P(X | Y), P(X), and P(Y), we can find P(Y | X) with Bayes rule
         * P(X)="Chance of rain", P(Y)="chance of clouds": "Chance of rain when it's cloudy = chance of clouds * chance of clouds given rain / chance of rain"
+        * Bayes nets
         * Random variables and expected value
             * P(X=x)
             * "probability-weighted average of all possible values"
@@ -180,6 +181,13 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Topic 3: Let's talk about projects
         * Project format
         * Project suggestions
+    * What went well:
+        * Basic probability, Bayes nets and exercise, connection to ML, WebPPL
+    * What went poorly:
+        * Bayes rule. Typo in my notes, stumbled, ended up with a result I couldn't interpret well.
+    * What to do next time:
+        * Should have practiced the Bayes Rule part of the lecture specifically!
+        * Should have had more examples of belief nets in the bag.
     * Assignment 1
         ~ Individual (small) assignment.
 
