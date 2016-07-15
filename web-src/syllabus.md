@@ -75,6 +75,7 @@ Each topic stands as a milestone in a particular tradition, and most remain acti
 * Game-related AI
     * Video game character AI/social simulation
     * Automated "Heads Up" player
+    * Realtime game AI
     * Guess game from level, generate level given game
     * GVGAI competition bot (or Arcade Learning Environment)
     * Learn game rules (GDL/VGDL) from forward model
@@ -88,6 +89,9 @@ Each topic stands as a milestone in a particular tradition, and most remain acti
         * Or for playing Heads Up?
     * Survey or deep-dive papers from recent AAAI/IJCAI/NIPS/etc conferences or arxiv publications in machine learning/AI/etc
     * Deep analysis/historical study/etc of some AI system(s) or survey of techniques
+    * Use a probabilistic programming language to encode one or more interesting models
+        * E.g. http://webppl.org (book at http://dippl.org), or PyMC3 for Python
+    * Program synthesis --- given a specification or a set of examples or a partially implemented program, come up with a function implementing it
     * ...
 
 #References
