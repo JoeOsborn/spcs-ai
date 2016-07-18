@@ -360,10 +360,11 @@ Make an emoji world simulation, under similar constraints as above: go as far as
 </ul></li>
 <li>Day 6: Formal Logic &amp; Prolog Crash Course
 <ul>
-<li>Reading (Do it before/after the assignment)
+<li>Reading, in this order:
 <ul>
-<li>Algorithm = Logic + Control</li>
-<li>Some chapters (todo:which?) of Prolog part of reader</li>
+<li>Art of Prolog, chapter 1</li>
+<li>Kowalski’s “Algorithm = Logic + Control”</li>
+<li>Art of Prolog, chapter 6 if you have time</li>
 </ul></li>
 <li>Topic 1: Propositional logic and inference</li>
 <li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.</li>
@@ -373,8 +374,7 @@ Make an emoji world simulation, under similar constraints as above: go as far as
 <dd>Individual (medium-length) assignment.
 </dd>
 </dl>
-<p>Todo: Some kind of knowledge base or expert system… or a maze generator-cum-solver… or something that shows how much more compact Prolog programs can be than Python ones? Two part thing? Or some of the 99 prolog problems?</p>
-Maze generator/solver seems like a good option. But maybe something not so maze-centric?</li>
+Write a maze solver or other planning problem in Prolog. It’s OK if it’s simpler than the Python maze or doesn’t return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. A good starting point might be, “recognizing a tweet of up to 140 characters” or “confirming a maze solution of fewer than 20 steps”. I’ll have a template up later tonight.</li>
 </ul></li>
 <li>Day 7: Machine learning as function approximation
 <ul>
@@ -411,10 +411,9 @@ Maze generator/solver seems like a good option. But maybe something not so maze-
 </dd>
 </dl></li>
 </ul></li>
-<li><dl>
-<dt>Day 8: Deep Neural Networks</dt>
-<dd><strong>Note: need to finalize projects by end of today or tomorrow</strong>
+<li>Day 8: Deep Neural Networks
 <ul>
+<li><strong>Note: need to finalize projects by end of today or tomorrow</strong></li>
 <li><dl>
 <dt>Reading</dt>
 <dd>Primary sources on deep neural networks
@@ -424,7 +423,8 @@ Maze generator/solver seems like a good option. But maybe something not so maze-
 <dd>Side references: NEAT, https://nucl.ai/blog/extreme-style-machines/
 </dd>
 </dl></li>
-<li>Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)</li>
+<li>Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)
+<ul>
 <li>Most neural networks have many “hidden” layers between the inputs and outputs, not just the one layer described yesterday
 <ul>
 <li>The “&gt; 0” bit is a kind of “output transformation” from activation values to classes.</li>
@@ -440,13 +440,15 @@ Maze generator/solver seems like a good option. But maybe something not so maze-
 </ul></li>
 <li>Learning in deep networks
 <ul>
-<li>Backpropagation, similar to RL/MCTS</li>
+<li>Backpropagation, similar to RL/MCTS but using derivatives</li>
 <li>“back-propagation refers only to the method for computing the gradient, while another algorithm, such as stochastic gradient descent, is used to perform learning using this gradient”</li>
 <li>Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters.</li>
-<li>TODO: Work example? More detailed algorithm pseudocode?</li>
+<li>TODO: Worked example? More detailed algorithm pseudocode?</li>
+</ul></li>
 </ul></li>
 <li>TODO: Exercise? Or do it after topic 2?</li>
-<li>Topic 2: Image recognition and convolution</li>
+<li>Topic 2: Image recognition and convolution
+<ul>
 <li>LeCun, 1989</li>
 <li>Useful if your data has a grid topology, e.g. time series (1d) or image data (2d) or video (3d) or …</li>
 <li>Anyone know what convolution is? It’s a kind of operation on matrices, and convolutional nets “just” use convolutions instead of multiplications in one or more of their layers.</li>
@@ -461,7 +463,9 @@ Maze generator/solver seems like a good option. But maybe something not so maze-
 <li>Multiple convolution layers can build up high level structures starting from the low level inputs</li>
 </ul></li>
 <li>One layer: Convolve to linear activations-&gt;Run through nonlinear activation function like ReLU (“detector”)-&gt;pool local groups into summary statistics (to achieve e.g. translation invariance)</li>
-<li>Topic 3: Auto-encoders</li>
+</ul></li>
+<li>Topic 3: Auto-encoders
+<ul>
 <li>Probably won’t have time…?</li>
 <li>(1987 and onwards)</li>
 <li>Neural net trained to try copying input to output</li>
@@ -473,14 +477,13 @@ Maze generator/solver seems like a good option. But maybe something not so maze-
 <li>Denoising, reconstruction, …</li>
 <li>A colleague uses these for Magic: The Gathering card generation from partial examples</li>
 </ul></li>
+</ul></li>
 <li><dl>
 <dt>Assignment:</dt>
 <dd>Write an image classifier or auto encoder?
 </dd>
 </dl></li>
-</ul>
-</dd>
-</dl></li>
+</ul></li>
 <li>Day 9: Computer History Museum
 <ul>
 <li>Assignment: Explication of a historical AI system</li>
@@ -498,7 +501,7 @@ Maze generator/solver seems like a good option. But maybe something not so maze-
 </dd>
 <dd>Prolog:
 <ul>
-<li>Art of Prolog, (todo: which chapters?)</li>
+<li>Art of Prolog, chapter 14</li>
 </ul>
 </dd>
 </dl></li>

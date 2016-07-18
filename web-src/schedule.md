@@ -235,18 +235,17 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Assignment 2:
         ~ Browse [Creative AI](http://creativeai.net), pick an AI system from there and explicate it. Use the same explication template as last week. Then, find a classmate and read each others' explications and talk about the AI systems.
 * Day 6: Formal Logic \& Prolog Crash Course
-    * Reading (Do it before/after the assignment)
-        * Algorithm = Logic + Control
-        * Some chapters (todo:which?) of Prolog part of reader
+    * Reading, in this order:
+        * Art of Prolog, chapter 1
+        * Kowalski's "Algorithm = Logic + Control"
+        * Art of Prolog, chapter 6 if you have time
     * Topic 1: Propositional logic and inference
     * Topic 2: Prolog and proof search. "Old school" symbolic AI stuff.
     * Topic 3: Knowledge bases, planning with temporal logic and event calculus, general game playing
     * Assignment:
         ~ Individual (medium-length) assignment.
 
-        Todo: Some kind of knowledge base or expert system... or a maze generator-cum-solver... or something that shows how much more compact Prolog programs can be than Python ones? Two part thing? Or some of the 99 prolog problems?
-
-        Maze generator/solver seems like a good option. But maybe something not so maze-centric?
+        Write a maze solver or other planning problem in Prolog. It's OK if it's simpler than the Python maze or doesn't return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. A good starting point might be, "recognizing a tweet of up to 140 characters" or "confirming a maze solution of fewer than 20 steps". I'll have a template up later tonight.
 * Day 7: Machine learning as function approximation
     * Topic 1: Error minimization and regression/gradient descent
         * Linearity, curse of dimensionality, ...
@@ -269,7 +268,7 @@ This document is intended for use by the instructor and TAs, since we don't want
         ~ Write a perceptron yourself, classify something. We'll need to provide data sets!
         ~ Install scikit-neuralnetwork or Keras
 * Day 8: Deep Neural Networks
-    ~ __Note: need to finalize projects by end of today or tomorrow__
+    * __Note: need to finalize projects by end of today or tomorrow__
     * Reading
         ~ Primary sources on deep neural networks
         ~ http://deeplearningbook.org, especially chapters 6, 9, 14
@@ -285,10 +284,10 @@ This document is intended for use by the instructor and TAs, since we don't want
             * The loss function has to be designed with the output layer in mind
             * [Citations for above](http://www.deeplearningbook.org/contents/mlp.html)
         * Learning in deep networks
-            * Backpropagation, similar to RL/MCTS
+            * Backpropagation, similar to RL/MCTS but using derivatives
             * "back-propagation refers only to the method for computing the gradient, while another algorithm, such as stochastic gradient descent, is used to perform learning using this gradient"
             * Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters.
-            * TODO: Work example? More detailed algorithm pseudocode?
+            * TODO: Worked example? More detailed algorithm pseudocode?
     * TODO: Exercise? Or do it after topic 2?
     * Topic 2: Image recognition and convolution
         * LeCun, 1989
@@ -322,7 +321,7 @@ This document is intended for use by the instructor and TAs, since we don't want
             * deeplearning.org chapter 10, 11
             * http://karpathy.github.io/2016/05/31/rl/
         ~ Prolog:
-            * Art of Prolog, (todo: which chapters?)
+            * Art of Prolog, chapter 14
     * Topic 1: List/tree processing and meta-interpreters
     * Topic 2: RNNs and string-to-string translation
         * Recurrent NNs: NNs with cycles.
