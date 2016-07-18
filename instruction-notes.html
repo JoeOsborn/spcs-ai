@@ -308,91 +308,218 @@ Fill out the preliminary evaluation form and send it to a TA. They’ll anonymiz
 <p>Make a probabilistic program expressing your Bayesian model from earlier today. Try to give it a prior based on your intuition, or by loading up a dataset. Either PyMC3 or WebPPL is fine.</p>
 Submit it as an <code>.ipynb</code> or a <code>.wppl</code> file in <code>projects/4-probabilistic</code>.</li>
 </ul></li>
-<li>Day 5: Machine learning as function approximation
+<li>Day 5: Creative AI
 <ul>
-<li>Topic 1: Error minimization and regression/gradient descent
+<li><dl>
+<dt>Reading (do it this afternoon/tonight, since I didn’t get it ready in advance. It will help with the assignment!)</dt>
+<dd>Kate Comptons’s classic <a href="http://galaxykate0.tumblr.com/post/139774965871/so-you-want-to-build-a-generator">procedural content generation post</a> and <a href="http://www.crystalcodepalace.com/tracery">tracery tutorial</a>
+</dd>
+<dd>Look at some <a href="http://cheapbotsdonequick.com">cheap bots done quick</a> bots
+</dd>
+<dd>Look at <a href="http://ncase.me/simulating">emoji world</a>
+</dd>
+<dd>Look at some <a href="https://twitter.com/deepforger?lang=en">deep forger</a> examples
+</dd>
+</dl></li>
+<li>Note: <a href="http://events.nucl.ai/program/tracks/">Nucl.ai</a> just started streaming! Check it out in your down time.</li>
+<li>Topic 0: MCTS/RL recap</li>
+<li>Topic 1: What is creative AI? Let’s go through some examples.
 <ul>
-<li>Overfitting, linearity, curse of dimensionality …</li>
-<li>Test set vs validation set, generalizing, overgeneralizing…</li>
+<li>Importance of framing, anthropomorphizability</li>
+<li>Not about “right answers”, but “feels right” or “interesting” or “visualizing possibilities” or “helping creators”</li>
 </ul></li>
-<li>Topic 2: Naive Bayes classifiers</li>
-<li>Topic 3: Perceptrons</li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Write a perceptron or simple NN, classify something. We’ll need to provide data sets!
-</dd>
-</dl></li>
+<li>Exercise: Think of examples?</li>
+<li>Topic 2: Planning, hierarchical planning, and planning for story/music/etc generation
+<ul>
+<li>World model</li>
+<li>Hierarchical decomposition</li>
+</ul></li>
+<li>Exercise: Break down a storyworld/genre/music-style/art-composition/etc into planning operators/world models?</li>
+<li>Topic 3: Grammars (special case of above) and Tracery
+<ul>
+<li>Grammars + objectives ~~ planning</li>
+</ul></li>
+<li>Topic 4: Artificial life: Cellular automata and genetic algorithms/evolutionary search
+<ul>
+<li>CAs, what they are, how they work</li>
+<li>GAs, special type of search, how they work</li>
 </ul></li>
 <li><dl>
-<dt>Day 6: Deep Neural Networks</dt>
-<dd><strong>Note: need to finalize projects</strong>
-<ul>
-<li><dl>
-<dt>Reading</dt>
-<dd>Primary sources on deep neural networks
+<dt>Assignment 1:</dt>
+<dd>Individual or pair (medium-length) assignment. Get it started today and try to finish it by the end of the week. Go as far as you can with it.
 </dd>
-</dl></li>
-<li>Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)</li>
-<li>Topic 2: Image recognition and convolution</li>
-<li>Topic 3: Auto-encoders</li>
+</dl>
+<p>Make a Tracery grammar to generate some interesting artifact: Genre stories, TV episodes, SVG images, Emoji compositions, musical leitmotifs, classified ads, inspirational quotes, fantasy game items, small programs… and use it somehow, maybe in a Twitter bot (using cheapbotsdonequick) or in some other context.</p>
+<p>AND/OR</p>
+Make an emoji world simulation, under similar constraints as above: go as far as you can!</li>
 <li><dl>
-<dt>Assignment:</dt>
-<dd>Write a image classifier or auto encoder?
-</dd>
-</dl></li>
-</ul>
-</dd>
-</dl></li>
-<li>Day 7: Recurrent Neural Networks
-<ul>
-<li><em>Finalize project ideas by end of today! or tomorrow!</em></li>
-<li><dl>
-<dt>Reading</dt>
-<dd>“The Unreasonable Effectiveness of RNNs” (Blog post)
-</dd>
-</dl></li>
-<li>Topic 1: String-to-string translation</li>
-<li>Topic 2: Style Transfer</li>
-<li>Topic 3: Deep Reinforcement Learning</li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Write a style transfer thing or string to string thing?
+<dt>Assignment 2:</dt>
+<dd>Browse <a href="http://creativeai.net">Creative AI</a>, pick an AI system from there and explicate it. Use the same explication template as last week. Then, find a classmate and read each others’ explications and talk about the AI systems.
 </dd>
 </dl></li>
 </ul></li>
-<li>Day 8: Formal Logic &amp; Prolog Crash Course
+<li>Day 6: Formal Logic &amp; Prolog Crash Course
 <ul>
+<li>Reading, in this order:
+<ul>
+<li>Art of Prolog, chapter 1</li>
+<li>Kowalski’s “Algorithm = Logic + Control”</li>
+<li>Art of Prolog, chapter 6 if you have time</li>
+</ul></li>
 <li>Topic 1: Propositional logic and inference</li>
 <li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.</li>
-<li>Topic 3: Knowledge bases</li>
+<li>Topic 3: Knowledge bases, planning with temporal logic and event calculus, general game playing</li>
 <li><dl>
 <dt>Assignment:</dt>
 <dd>Individual (medium-length) assignment.
 </dd>
 </dl>
-Todo: Some kind of knowledge base or expert system… or a maze generator-cum-solver… or something that shows how much more compact Prolog programs can be than Python ones? Two part thing with one part today and one part Monday (day 10). Or some of the 99 prolog problems?</li>
+Write a maze solver or other planning problem in Prolog. It’s OK if it’s simpler than the Python maze or doesn’t return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. A good starting point might be, “recognizing a tweet of up to 140 characters” or “confirming a maze solution of fewer than 20 steps”. I’ll have a template up later tonight.</li>
 </ul></li>
-<li>Day 9: Creative AI
+<li>Day 7: Machine learning as function approximation
+<ul>
+<li>Topic 1: Error minimization and regression/gradient descent
+<ul>
+<li>Linearity, curse of dimensionality, …</li>
+<li>Test set vs validation set, dropout, overfitting, stochastic gradient descent, …, generalizing…</li>
+<li>What does this have in common with MCTS? With RL?</li>
+</ul></li>
+<li>TODO: Need an exercise! Maybe locate a data set? or design some features/inputs/outputs?</li>
+<li>Topic 2: Perceptrons and perceptron learning
+<ul>
+<li>Perceptron: vector of inputs -&gt; output boolean, learn vector of weights and bias y = (wx+b &gt; 0); usually formulated with input x0 = 1 and w0 = b and y = (wx &gt; 0)
+<ul>
+<li>Classification problem</li>
+<li>Initialize all weights to small random values (used to suggest all zeroes, but this suggestion works better with the stochastic gradient descent methods used for training bigger NNs)</li>
+<li>cost function: How to score a predicted output vs the actual labeled output</li>
+<li>learning = descending the gradient of the cost function</li>
+</ul></li>
+<li>Learning algorithm: For each sample input/output, evaluate y = wx (no &gt; 0 here); compare y vs desired output d; update each weight wi += c(d, y) * xi. (e.g. c(a,b) = a - b)
+<ul>
+<li>Example on some linear thing</li>
+<li>Will it converge? Yes, iff linearly separable.</li>
+<li>Let’s try it on XOR and see</li>
+<li>If not linearly separable, will it get close to an approximate answer? NO</li>
+</ul></li>
+</ul></li>
+<li>Topic 3: Multilayer perceptrons. Maybe pull in tomorrow’s material.</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Write a perceptron yourself, classify something. We’ll need to provide data sets!
+</dd>
+<dd>Install scikit-neuralnetwork or Keras
+</dd>
+</dl></li>
+</ul></li>
+<li>Day 8: Deep Neural Networks
+<ul>
+<li><strong>Note: need to finalize projects by end of today or tomorrow</strong></li>
+<li><dl>
+<dt>Reading</dt>
+<dd>Primary sources on deep neural networks
+</dd>
+<dd>http://deeplearningbook.org, especially chapters 6, 9, 14
+</dd>
+<dd>Side references: NEAT, https://nucl.ai/blog/extreme-style-machines/
+</dd>
+</dl></li>
+<li>Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)
+<ul>
+<li>Most neural networks have many “hidden” layers between the inputs and outputs, not just the one layer described yesterday
+<ul>
+<li>The “&gt; 0” bit is a kind of “output transformation” from activation values to classes.</li>
+</ul></li>
+<li>Are those networks made out of linear perceptrons like yesterday, or something else?
+<ul>
+<li>Something else — why?</li>
+<li>((TODO: UNSURE:: Because stacking linear classifiers just gives you linear separation in increasing numbers of dimensions. But this can get really inefficient?))</li>
+<li>By analogy to non-linear neuron firing “activation”, we use activation functions that are “nearly” linear. The default suggestion is ReLU (rectified linear units) because they’re simple and cheap to calculate and don’t have the same saturation issues as sigmoids (becoming insensitive to inputs)</li>
+<li>However, for output units sigmoids are still used in predicting binary variables (and softmax for multi-class prediction): ensure there’s always a strong gradient when you have a wrong answer.</li>
+<li>The loss function has to be designed with the output layer in mind</li>
+<li><a href="http://www.deeplearningbook.org/contents/mlp.html">Citations for above</a></li>
+</ul></li>
+<li>Learning in deep networks
+<ul>
+<li>Backpropagation, similar to RL/MCTS but using derivatives</li>
+<li>“back-propagation refers only to the method for computing the gradient, while another algorithm, such as stochastic gradient descent, is used to perform learning using this gradient”</li>
+<li>Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters.</li>
+<li>TODO: Worked example? More detailed algorithm pseudocode?</li>
+</ul></li>
+</ul></li>
+<li>TODO: Exercise? Or do it after topic 2?</li>
+<li>Topic 2: Image recognition and convolution
+<ul>
+<li>LeCun, 1989</li>
+<li>Useful if your data has a grid topology, e.g. time series (1d) or image data (2d) or video (3d) or …</li>
+<li>Anyone know what convolution is? It’s a kind of operation on matrices, and convolutional nets “just” use convolutions instead of multiplications in one or more of their layers.</li>
+<li>Convolution is more or less a weighted average considering nearby elements more strongly than far-away ones.</li>
+<li>For example, for a 2D image there’s a nested sum and a 2D weight function
+<ul>
+<li>“kernel”, like in image processing</li>
+<li>What happens at the edges of the image?</li>
+</ul></li>
+<li>If a regular neural network lets every input unit react with every output unit equally, convolutions enforce some locality and admit smaller, more efficient networks (or equivalently, similarly sized networks that extract more medium-level features)
+<ul>
+<li>Multiple convolution layers can build up high level structures starting from the low level inputs</li>
+</ul></li>
+<li>One layer: Convolve to linear activations-&gt;Run through nonlinear activation function like ReLU (“detector”)-&gt;pool local groups into summary statistics (to achieve e.g. translation invariance)</li>
+</ul></li>
+<li>Topic 3: Auto-encoders
+<ul>
+<li>Probably won’t have time…?</li>
+<li>(1987 and onwards)</li>
+<li>Neural net trained to try copying input to output</li>
+<li>Design them to be unable to learn perfect copying, so that their approximate copies only “resemble” the inputs, to learn useful/typical/important properties of the data</li>
+<li>Often, we care more about the learned parameters than the actual outputs</li>
+<li>Why is this useful?
+<ul>
+<li>Dimensionality reduction, feature learning…</li>
+<li>Denoising, reconstruction, …</li>
+<li>A colleague uses these for Magic: The Gathering card generation from partial examples</li>
+</ul></li>
+</ul></li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Write an image classifier or auto encoder?
+</dd>
+</dl></li>
+</ul></li>
+<li>Day 9: Computer History Museum
+<ul>
+<li>Assignment: Explication of a historical AI system</li>
+</ul></li>
+<li>Day 10: Prolog techniques; recurrent neural networks.
 <ul>
 <li><dl>
 <dt>Reading</dt>
-<dd>Generative Methods paper <span class="citation">(Compton, Osborn, and Mateas 2013)</span> and Kate’s PCG blog.
+<dd>ML:
+<ul>
+<li>“The Unreasonable Effectiveness of RNNs” (Blog post)</li>
+<li>deeplearning.org chapter 10, 11</li>
+<li>http://karpathy.github.io/2016/05/31/rl/</li>
+</ul>
+</dd>
+<dd>Prolog:
+<ul>
+<li>Art of Prolog, chapter 14</li>
+</ul>
 </dd>
 </dl></li>
-<li>Topic: What is creative AI? Intro to Tracery.</li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Individual or pair (medium-length) assignment. Due Monday.
-</dd>
-</dl>
-<p>Make a Tracery grammar to generate some interesting artifact: Genre stories, TV episodes, SVG images, Emoji compositions, musical leitmotifs, classified ads, inspirational quotes, fantasy game items, … and put up a Twitter bot with it. Go as far as you can with this.</p>
-<em>Todo:elaborate.</em></li>
-</ul></li>
-<li>Day 10: Solving problems with logic
+<li>Topic 1: List/tree processing and meta-interpreters</li>
+<li>Topic 2: RNNs and string-to-string translation
 <ul>
-<li>Topic 1: Planning with temporal logic and the event calculus. General game playing.</li>
-<li>Topic 2: List/tree processing and meta-interpreters</li>
-<li>Topic 3: DCGs?</li>
+<li>Recurrent NNs: NNs with cycles.</li>
+<li>Unrolling. Show diagram.</li>
+<li>backpropagation through time.</li>
+<li>LSTM
+<ul>
+<li>Input, output, forget gates collect activations from inside and outside the block, and control the activation of the cell via multiplications (small black circles). The input and output gates multiply the input and output of the cell while the forget gate multiplies the cell’s previous state. No activation function is applied within the cell. Gate activations usually logistic sigmoid, cell input and output usually logistic sigmoid but sometimes output is identity function.</li>
+</ul></li>
+</ul></li>
+<li>Topic 3: Deep Reinforcement Learning
+<ul>
+<li>learning a policy by learning state-action function, approximating rather than filling in a table</li>
+</ul></li>
 <li><dl>
 <dt>Assignment:</dt>
 <dd>Individual or pair (short) assignment.
@@ -426,9 +553,6 @@ Generate argument trees using a meta-interpreter and evaluate their quality. Pro
 </ul>
 <h1 id="references" class="unnumbered">References</h1>
 <div id="refs" class="references">
-<div id="ref-compton2013generative">
-<p>Compton, Kate, Joseph C Osborn, and Michael Mateas. 2013. “Generative Methods.” In <em>The Fourth Procedural Content Generation in Games Workshop, PCG</em>. Vol. 1.</p>
-</div>
 <div id="ref-dippl">
 <p>Goodman, Noah D, and Andreas Stuhlmüller. 2014. “The Design and Implementation of Probabilistic Programming Languages.” <a href="http://dippl.org" class="uri">http://dippl.org</a>.</p>
 </div>
