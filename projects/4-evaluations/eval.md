@@ -34,10 +34,12 @@ C.  less time
 
 Are there any topics you would like to see covered in the course that are not already on the syllabus?
 
-(_)
+(SVM)
 
 Are there any topics that we’ve covered in class that you would have liked to have spent more time on?
 
-(_)
+(I would have liked going over the maze problem in class seeing as no one really got it to fully work)
+
+
 
 On a side note, it would be great if we could program in another language than python (say Java), even though python would be easier to implement matrix/neural_network libraries when covering the subject of nets...
