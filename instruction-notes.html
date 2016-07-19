@@ -136,6 +136,18 @@ Also include a Python cell which prints out your name using the <code>print()</c
 <li>Ask for pseudocode (recursive AND iterative)</li>
 </ul></li>
 </ul></li>
+<li>What worked:
+<ul>
+<li>State machine exercise. Many students knew Python already so that material was successful.</li>
+</ul></li>
+<li>What didn’t work:
+<ul>
+<li>Rushing through tree/graph material, not having a 100% prepared set of examples for Python learning.</li>
+</ul></li>
+<li>What to change for next time:
+<ul>
+<li>More active learning and student-driven exampling, a little less state machine theory material (save it for a subsequent day) and a little more tree/graph material, maybe even before the state machines.</li>
+</ul></li>
 <li><dl>
 <dt>Assignment</dt>
 <dd>Individual (short) assignment. Write two state machine evaluators for deterministic finite word automata: one which takes a state machine representing a language along with a string, and checks whether the machine accepts the string; and another which takes such a state machine and generates strings from it.
@@ -156,10 +168,35 @@ Also include a Python cell which prints out your name using the <code>print()</c
 </ul></li>
 <li>At least section 3 (“MONTE CARLO TREE SEARCH”) of Cameron Browne et al’s <a href="http://repository.essex.ac.uk/4117/1/MCTS-Survey.pdf">survey of MCTS methods</a></li>
 </ul></li>
-<li>Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore.</li>
-<li>Exercise: Pick an interesting problem and try to phrase it as “local search”.</li>
-<li>Topic 2: MCTS and back propagation</li>
-<li>Topic 3: Reinforcement learning</li>
+<li>Topic 1: Posing problems as graph search. Example: PuzzleGraph. Heuristic search (A*). Exploit/explore. Discrete constraint problems too (n-queens). Graph vs grid representations of space.
+<ul>
+<li>Recommend following the links from RedBlobGames’ tutorial as well.</li>
+</ul></li>
+<li>Exercise: Pair up. Pick an interesting problem and try to phrase it as “search” or planning. What are the operators at a given state? What are reward values at the end? Do operators have costs? Etc. Candidates include: transforming mathematical formulae, solving some logic puzzle, graph coloring, cooking…</li>
+<li>Topic 2: MCTS, expected value, and backpropagation of reward
+<ul>
+<li>How do I calculate expected value?</li>
+<li>Tree policy: How do I pick action? uniform random, weighted random, random among untried possibilities, … balancing exploit/explore</li>
+<li>Default policy: How do I pick action? Want to explore as much as possible?</li>
+<li>Backpropagation: max, decay, …</li>
+</ul></li>
+<li>Topic 3: Reinforcement learning: the problem, the basic idea, how it differs from MCTS (MCTS is a special case)
+<ul>
+<li>“MCTS estimates temporary state values in order to decide the next move, whereas TDL learns the long-term value of each state that then guides future behaviour”—mcts guesses more</li>
+</ul></li>
+<li>What worked:
+<ul>
+<li>Graph search, A* material, MCTS explanation, small-group activity</li>
+</ul></li>
+<li>What didn’t work:
+<ul>
+<li>RL material wasn’t prepared thoroughly enough</li>
+<li>Maze should have been an immutable value object!</li>
+</ul></li>
+<li>What to change:
+<ul>
+<li>Needed more active learning opportunities, more specific RL material, too many different topics in one day (nobody had time to do enough reading).</li>
+</ul></li>
 <li><dl>
 <dt>Assignment</dt>
 <dd>Individual or pair (long) assignment. (1) should be done by tomorrow, (2) and (3) by Monday.
@@ -174,110 +211,321 @@ Also include a Python cell which prints out your name using the <code>print()</c
 </ol>
 <em>(TAs could help with writing the code or understanding the algorithms. Eager students could implement multiple algorithms, select one on the fly, generate mazes, visualize the path-finding algorithms.)</em></li>
 </ul></li>
-<li>Day 4: Probabilistic programming
+<li>Day 4: Intro to probability and probabilistic programming
 <ul>
 <li><strong>Note: also need to do intermediate evaluations at the end of the day</strong></li>
-<li>Topic 1: Basic probability/Bayes rule</li>
-<li>Topic 2: Probabilistic programming (pymc3)</li>
-<li>Topic 3: Let’s talk about projects</li>
+<li>Topic 0: Feedback/notes on yesterday’s assignment
+<ul>
+<li>Ask the TAs for code to let you put Maze objects into sets or use them as keys in dicts. I meant to include that from the start. This lets you avoid tricks like turning the Maze into a string for this purpose.</li>
+<li>NOTE: If you put a Maze into a set or use it as a dict key, don’t modify it at all afterwards (e.g. via <code>move_player</code>, <code>toggle</code>, or setting its variables)! Only clone it and change the clones—otherwise the set/dict will break in super confusing ways.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Should use <code>m.move_player()</code> and <code>m.toggle()</code> to modify game state and not e.g. check if <code>m.grid[y][x] == &quot;#&quot;</code></li>
+<li>Since this is destructive, they should copy the maze using <code>m.clone()</code> before making a move</li>
+<li>They can’t (easily) use a distance grid because switching switches changes which doors are open and closed, so player position doesn’t suffice to represent world state, so:</li>
+<li>They need to track whether a maze has been seen before. One way is to use a set to track seen mazes.</li>
+<li>They need to track the cost and predecessor state along with Maze states. Some ways of doing that include:
+<ul>
+<li>Add <code>cost</code> and <code>predecessor</code> properties to maze objects.</li>
+<li>Include <code>cost</code> and <code>predecessor</code> with the maze in the frontier in a tuple. Of course, using priority queues the tuple’s first element should be <code>g(n) + h(n)</code> where <code>g(n)</code> is the real cost to reach node <code>n</code> and <code>h(n)</code> is the heuristic value (e.g. Manhattan distance from goal) at <code>n</code>.</li>
+<li>Keep a <code>costs</code> dict and a <code>predecessors</code> dict or a <code>best_paths</code> dict keyed by Maze objects.</li>
+</ul></li>
+</ol></li>
+<li>Topic 1: Basic probability/Bayes rule
+<ul>
+<li>what probability of an event means</li>
+<li>P(X) – cases where X happens / all possible cases</li>
+<li>P(X, Y) – cases where both X and Y happen / all possible cases</li>
+<li>If X,Y independent, then P(X,Y) = P(X) P(Y)</li>
+<li>P(X | Y) = P(Y|X) P(X) / P(Y) – or equivalently, P(Y,X) = P(X|Y) P(Y) / P(X)</li>
+<li>Chaining: P(G,S,R)=P(G | S,R) P(S | R) P(R)</li>
+<li>I like the <a href="https://en.wikipedia.org/wiki/Conditional_probability">wikipedia page</a> on conditional probability too</li>
+<li>Bayesian statistics
+<ul>
+<li>Prior (background belief) and posterior (after considering prior) probability</li>
+<li>Not, “What is the chance of X happening”, but “Given my background knowledge/superstition/experience, what is the chance of X happening?”</li>
+<li>Example priors: Uniform/flat prior; or:
+<ul>
+<li>“An example is a prior distribution for the temperature at noon tomorrow. A reasonable approach is to make the prior a normal distribution with expected value equal to today’s noontime temperature, with variance equal to the day-to-day variance of atmospheric temperature, or a distribution of the temperature for that day of the year.”</li>
+</ul></li>
+<li>Priors are really important but we don’t have time to get too deeply into them</li>
+</ul></li>
+<li>Bayes nets</li>
+<li>Given P(X | Y), P(X), and P(Y), we can find P(Y | X) with Bayes rule</li>
+<li>P(X)=“Chance of rain”, P(Y)=“chance of clouds”: “Chance of rain when it’s cloudy = chance of clouds * chance of clouds given rain / chance of rain”</li>
+<li>Bayes nets</li>
+<li>Random variables and expected value
+<ul>
+<li>P(X=x)</li>
+<li>“probability-weighted average of all possible values”</li>
+</ul></li>
+<li>Distributions (normal, poisson, negative binomial), mean/variance, and PDFs</li>
+</ul></li>
+<li>Exercise: Make a bayes net for some situation. It’s okay to use e.g. “low/medium/high” for the probabilities in the tables.</li>
+<li>Topic 2: Probabilistic programming
+<ul>
+<li>Programming with distribution variables</li>
+<li>“probabilistic programming languages extend a well-specified deterministic programming language with primitive constructs for random choice” <span class="citation">(Goodman and Stuhlmüller 2014)</span></li>
+<li>“If we view the semantics of the underlying deterministic language as a map from programs to executions of the program, the semantics of a PPL built on it will be a map from programs to distributions over executions. When the program halts with probability one, this induces a proper distribution over return values.” <span class="citation">(Goodman and Stuhlmüller 2014)</span></li>
+<li>WebPPL examples</li>
+</ul></li>
+<li>Topic 3: Let’s talk about projects
+<ul>
+<li>Project format</li>
+<li>Project suggestions</li>
+</ul></li>
+<li>What went well:
+<ul>
+<li>Basic probability, Bayes nets and exercise, connection to ML, WebPPL</li>
+</ul></li>
+<li>What went poorly:
+<ul>
+<li>Bayes rule. Typo in my notes, stumbled, ended up with a result I couldn’t interpret well.</li>
+</ul></li>
+<li>What to do next time:
+<ul>
+<li>Should have practiced the Bayes Rule part of the lecture specifically!</li>
+<li>Should have had more examples of belief nets in the bag.</li>
+</ul></li>
 <li><dl>
 <dt>Assignment 1</dt>
 <dd>Individual (small) assignment.
 </dd>
 </dl>
-Give me a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well.</li>
+Give me a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well. Submit them (as Markdown <code>.md</code> files) in the folder <code>projects/4-project-ideas</code>.</li>
 <li><dl>
 <dt>Assignment 2</dt>
-<dd>Individual or pair (medium-length) assignment
+<dd>Individual (small) assignment.
 </dd>
 </dl>
-Write a probabilistic program that generates/runs/solves/represents/etc the mazes from before? Or somehow relates to the MCTS stuff?</li>
+Fill out the preliminary evaluation form and send it to a TA. They’ll anonymize them and send them on to me so I can adjust the course based on your feedback. You can find the form in the <code>projects/4-evaluations</code> folder.</li>
+<li>Assignment 3: MCTS and Reinforcement Learning agents for maze solving.</li>
+<li><dl>
+<dt>Assignment 4 (Optional)</dt>
+<dd>Individual or pair (small) assignment.
+</dd>
+</dl>
+<p>Make a probabilistic program expressing your Bayesian model from earlier today. Try to give it a prior based on your intuition, or by loading up a dataset. Either PyMC3 or WebPPL is fine.</p>
+Submit it as an <code>.ipynb</code> or a <code>.wppl</code> file in <code>projects/4-probabilistic</code>.</li>
 </ul></li>
-<li>Day 5: Machine learning as function approximation
+<li>Day 5: Creative AI
 <ul>
-<li>Topic 1: Error minimization and regression/gradient descent
+<li><dl>
+<dt>Reading (do it this afternoon/tonight, since I didn’t get it ready in advance. It will help with the assignment!)</dt>
+<dd>Kate Comptons’s classic <a href="http://galaxykate0.tumblr.com/post/139774965871/so-you-want-to-build-a-generator">procedural content generation post</a> and <a href="http://www.crystalcodepalace.com/tracery">tracery tutorial</a>
+</dd>
+<dd>Look at some <a href="http://cheapbotsdonequick.com">cheap bots done quick</a> bots
+</dd>
+<dd>Look at <a href="http://ncase.me/simulating">emoji world</a>
+</dd>
+<dd>Look at some <a href="https://twitter.com/deepforger?lang=en">deep forger</a> examples
+</dd>
+</dl></li>
+<li>Note: <a href="http://events.nucl.ai/program/tracks/">Nucl.ai</a> just started streaming! Check it out in your down time.</li>
+<li>Topic 0: MCTS/RL recap</li>
+<li>Topic 1: What is creative AI? Let’s go through some examples.
 <ul>
-<li>Overfitting, linearity, curse of dimensionality …</li>
-<li>Test set vs validation set, generalizing, overgeneralizing…</li>
+<li>Importance of framing, anthropomorphizability</li>
+<li>Not about “right answers”, but “feels right” or “interesting” or “visualizing possibilities” or “helping creators”</li>
 </ul></li>
-<li>Topic 2: Naive Bayes classifiers</li>
-<li>Topic 3: Perceptrons</li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Write a perceptron or simple NN, classify something. We’ll need to provide data sets!
-</dd>
-</dl></li>
+<li>Exercise: Think of examples?</li>
+<li>Topic 2: Planning, hierarchical planning, and planning for story/music/etc generation
+<ul>
+<li>World model</li>
+<li>Hierarchical decomposition</li>
+</ul></li>
+<li>Exercise: Break down a storyworld/genre/music-style/art-composition/etc into planning operators/world models?</li>
+<li>Topic 3: Grammars (special case of above) and Tracery
+<ul>
+<li>Grammars + objectives ~~ planning</li>
+</ul></li>
+<li>Topic 4: Artificial life: Cellular automata and genetic algorithms/evolutionary search
+<ul>
+<li>CAs, what they are, how they work</li>
+<li>GAs, special type of search, how they work</li>
+</ul></li>
+<li>What went well:
+<ul>
+<li>ALife, GAs, MCTS recap, idea of creative AI and overview, planning domains</li>
+</ul></li>
+<li>What went poorly:
+<ul>
+<li>Grammar overview, group “creative AI” exercise didn’t go as deep as I’d hoped, didn’t get to the planning exercise</li>
+</ul></li>
+<li>What to do next time:
+<ul>
+<li>Planning exercise; more grammar examples prepared</li>
 </ul></li>
 <li><dl>
-<dt>Day 6: Deep Neural Networks</dt>
-<dd><strong>Note: need to finalize projects</strong>
-<ul>
-<li><dl>
-<dt>Reading</dt>
-<dd>Primary sources on deep neural networks
+<dt>Assignment 1:</dt>
+<dd>Individual or pair (medium-length) assignment. Get it started today and try to finish it by the end of the week. Go as far as you can with it.
 </dd>
-</dl></li>
-<li>Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)</li>
-<li>Topic 2: Image recognition and convolution</li>
-<li>Topic 3: Auto-encoders</li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Write a image classifier or auto encoder?
-</dd>
-</dl></li>
-</ul>
-</dd>
-</dl></li>
-<li>Day 7: Recurrent Neural Networks
-<ul>
-<li><em>Finalize project ideas by end of today! or tomorrow!</em></li>
-<li><dl>
-<dt>Reading</dt>
-<dd>“The Unreasonable Effectiveness of RNNs” (Blog post)
-</dd>
-</dl></li>
-<li>Topic 1: String-to-string translation</li>
-<li>Topic 2: Style Transfer</li>
-<li>Topic 3: Deep Reinforcement Learning</li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Write a style transfer thing or string to string thing?
-</dd>
-</dl></li>
+</dl>
+<p>Make a Tracery grammar to generate some interesting artifact: Genre stories, TV episodes, SVG images, Emoji compositions, musical leitmotifs, classified ads, inspirational quotes, fantasy game items, small programs… and use it somehow, maybe in a Twitter bot (using cheapbotsdonequick) or in some other context.</p>
+<p>AND/OR</p>
+Make an emoji world simulation, under similar constraints as above: go as far as you can!</li>
 </ul></li>
-<li>Day 8: Formal Logic &amp; Prolog Crash Course
+<li>Day 6: Formal Logic &amp; Prolog Crash Course
 <ul>
+<li>Reading, in this order:
+<ul>
+<li>Art of Prolog, chapter 1</li>
+<li>Kowalski’s “Algorithm = Logic + Control”</li>
+<li>Art of Prolog, chapter 6 if you have time</li>
+</ul></li>
 <li>Topic 1: Propositional logic and inference</li>
 <li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.</li>
-<li>Topic 3: Knowledge bases</li>
+<li>Topic 3: Knowledge bases, planning with temporal logic and event calculus, general game playing</li>
 <li><dl>
 <dt>Assignment:</dt>
 <dd>Individual (medium-length) assignment.
 </dd>
 </dl>
-Todo: Some kind of knowledge base or expert system… or a maze generator-cum-solver… or something that shows how much more compact Prolog programs can be than Python ones? Two part thing with one part today and one part Monday (day 10). Or some of the 99 prolog problems?</li>
+Write a maze solver or other planning problem in Prolog. It’s OK if it’s simpler than the Python maze or doesn’t return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. A good starting point might be, “recognizing a tweet of up to 140 characters” or “confirming a maze solution of fewer than 20 steps”. I’ll have a template up later tonight.</li>
 </ul></li>
-<li>Day 9: Creative AI
+<li>Day 7: Machine learning as function approximation
+<ul>
+<li>Topic 1: Error minimization and regression/gradient descent
+<ul>
+<li>Inputs, outputs, function approximation, …</li>
+<li>Linearity, curse of dimensionality, …</li>
+<li>Test set vs validation set, dropout, overfitting, stochastic gradient descent, …, generalizing…</li>
+<li>What does this have in common with MCTS? With RL?</li>
+</ul></li>
+<li>TODO: Need an exercise! Maybe locate a data set and design some features/inputs/outputs?</li>
+<li>Topic 2: Perceptrons and perceptron learning
+<ul>
+<li>Perceptron: vector of inputs -&gt; output boolean, learn vector of weights and bias y = (wx+b &gt; 0); usually formulated with input x0 = 1 and w0 = b and y = (wx &gt; 0)
+<ul>
+<li>Classification problem</li>
+<li>Initialize all weights to small random values (used to suggest all zeroes, but this suggestion works better with the stochastic gradient descent methods used for training bigger NNs)</li>
+<li>cost function: How to score a predicted output vs the actual labeled output</li>
+<li>learning = descending the gradient of the cost function</li>
+</ul></li>
+<li>Learning algorithm: For each sample input/output, evaluate y = wx (no &gt; 0 here); compare y vs desired output d; update each weight wi += c(d, y) * xi. (e.g. c(a,b) = a - b)
+<ul>
+<li>Example on some linear thing</li>
+<li>Will it converge? Yes, iff linearly separable.</li>
+<li>Let’s try it on XOR and see</li>
+<li>If not linearly separable, will it get close to an approximate answer? NO</li>
+</ul></li>
+</ul></li>
+<li>Topic 3: Multilayer perceptrons. Maybe pull in tomorrow’s material.</li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Write a perceptron yourself, classify something. We’ll need to provide data sets!
+</dd>
+<dd>Install scikit-neuralnetwork or Keras
+</dd>
+</dl></li>
+</ul></li>
+<li>Day 8: Deep Neural Networks
+<ul>
+<li><strong>Note: need to finalize projects by end of today or tomorrow</strong></li>
+<li><dl>
+<dt>Reading</dt>
+<dd>http://deeplearningbook.org, especially chapters 6, 9, 14
+</dd>
+<dd>Side references: NEAT, https://nucl.ai/blog/extreme-style-machines/
+</dd>
+</dl></li>
+<li>Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)
+<ul>
+<li>Most neural networks have many “hidden” layers between the inputs and outputs, not just the one layer described yesterday
+<ul>
+<li>The “&gt; 0” bit is a kind of “output transformation” from activation values to classes.</li>
+</ul></li>
+<li>Are those networks made out of linear perceptrons like yesterday, or something else?
+<ul>
+<li>Something else — why?</li>
+<li>((TODO: UNSURE:: Because stacking linear classifiers just gives you linear separation in increasing numbers of dimensions. But this can get really inefficient?))</li>
+<li>By analogy to non-linear neuron firing “activation”, we use activation functions that are “nearly” linear. The default suggestion is ReLU (rectified linear units) because they’re simple and cheap to calculate and don’t have the same saturation issues as sigmoids (becoming insensitive to inputs)</li>
+<li>However, for output units sigmoids are still used in predicting binary variables (and softmax for multi-class prediction): ensure there’s always a strong gradient when you have a wrong answer.</li>
+<li>The loss function has to be designed with the output layer in mind</li>
+<li><a href="http://www.deeplearningbook.org/contents/mlp.html">Citations for above</a></li>
+</ul></li>
+<li>Learning in deep networks
+<ul>
+<li>Backpropagation, similar to RL/MCTS but using derivatives</li>
+<li>“back-propagation refers only to the method for computing the gradient, while another algorithm, such as stochastic gradient descent, is used to perform learning using this gradient”</li>
+<li>Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters.</li>
+<li>TODO: Worked example? More detailed algorithm pseudocode?</li>
+</ul></li>
+</ul></li>
+<li>TODO: Exercise? Or do it after topic 2?</li>
+<li>Topic 2: Image recognition and convolution
+<ul>
+<li>LeCun, 1989</li>
+<li>Useful if your data has a grid topology, e.g. time series (1d) or image data (2d) or video (3d) or …</li>
+<li>Anyone know what convolution is? It’s a kind of operation on matrices, and convolutional nets “just” use convolutions instead of multiplications in one or more of their layers.</li>
+<li>Convolution is more or less a weighted average considering nearby elements more strongly than far-away ones.</li>
+<li>For example, for a 2D image there’s a nested sum and a 2D weight function
+<ul>
+<li>“kernel”, like in image processing</li>
+<li>What happens at the edges of the image?</li>
+</ul></li>
+<li>If a regular neural network lets every input unit react with every output unit equally, convolutions enforce some locality and admit smaller, more efficient networks (or equivalently, similarly sized networks that extract more medium-level features)
+<ul>
+<li>Multiple convolution layers can build up high level structures starting from the low level inputs</li>
+</ul></li>
+<li>One layer: Convolve to linear activations-&gt;Run through nonlinear activation function like ReLU (“detector”)-&gt;pool local groups into summary statistics (to achieve e.g. translation invariance)</li>
+</ul></li>
+<li>Topic 3: Auto-encoders
+<ul>
+<li>Probably won’t have time…?</li>
+<li>(1987 and onwards)</li>
+<li>Neural net trained to try copying input to output</li>
+<li>Design them to be unable to learn perfect copying, so that their approximate copies only “resemble” the inputs, to learn useful/typical/important properties of the data</li>
+<li>Often, we care more about the learned parameters than the actual outputs</li>
+<li>Why is this useful?
+<ul>
+<li>Dimensionality reduction, feature learning…</li>
+<li>Denoising, reconstruction, …</li>
+<li>A colleague uses these for Magic: The Gathering card generation from partial examples</li>
+</ul></li>
+</ul></li>
+<li><dl>
+<dt>Assignment:</dt>
+<dd>Write an image classifier or auto encoder?
+</dd>
+</dl></li>
+</ul></li>
+<li>Day 9: Computer History Museum
+<ul>
+<li>Assignment: Explication of a historical AI system</li>
+</ul></li>
+<li>Day 10: Prolog techniques; recurrent neural networks.
 <ul>
 <li><dl>
 <dt>Reading</dt>
-<dd>Generative Methods paper <span class="citation">(Compton, Osborn, and Mateas 2013)</span> and Kate’s PCG blog.
+<dd>ML:
+<ul>
+<li>“The Unreasonable Effectiveness of RNNs” (Blog post)</li>
+<li>deeplearning.org chapter 10, 11</li>
+<li>http://karpathy.github.io/2016/05/31/rl/</li>
+</ul>
+</dd>
+<dd>Prolog:
+<ul>
+<li>Art of Prolog, chapter 14</li>
+</ul>
 </dd>
 </dl></li>
-<li>Topic: What is creative AI? Intro to Tracery.</li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Individual or pair (medium-length) assignment. Due Monday.
-</dd>
-</dl>
-<p>Make a Tracery grammar to generate some interesting artifact: Genre stories, TV episodes, SVG images, Emoji compositions, musical leitmotifs, classified ads, inspirational quotes, fantasy game items, … and put up a Twitter bot with it. Go as far as you can with this.</p>
-<em>Todo:elaborate.</em></li>
-</ul></li>
-<li>Day 10: Solving problems with logic
+<li>Topic 1: List/tree processing and meta-interpreters</li>
+<li>Topic 2: RNNs and string-to-string translation
 <ul>
-<li>Topic 1: Planning with temporal logic and the event calculus. General game playing.</li>
-<li>Topic 2: List/tree processing and meta-interpreters</li>
-<li>Topic 3: DCGs?</li>
+<li>Recurrent NNs: NNs with cycles.</li>
+<li>Unrolling. Show diagram.</li>
+<li>backpropagation through time.</li>
+<li>LSTM
+<ul>
+<li>Input, output, forget gates collect activations from inside and outside the block, and control the activation of the cell via multiplications (small black circles). The input and output gates multiply the input and output of the cell while the forget gate multiplies the cell’s previous state. No activation function is applied within the cell. Gate activations usually logistic sigmoid, cell input and output usually logistic sigmoid but sometimes output is identity function.</li>
+</ul></li>
+</ul></li>
+<li>Topic 3: Deep Reinforcement Learning
+<ul>
+<li>learning a policy by learning state-action function, approximating rather than filling in a table</li>
+</ul></li>
 <li><dl>
 <dt>Assignment:</dt>
 <dd>Individual or pair (short) assignment.
@@ -311,8 +559,8 @@ Generate argument trees using a meta-interpreter and evaluate their quality. Pro
 </ul>
 <h1 id="references" class="unnumbered">References</h1>
 <div id="refs" class="references">
-<div id="ref-compton2013generative">
-<p>Compton, Kate, Joseph C Osborn, and Michael Mateas. 2013. “Generative Methods.” In <em>The Fourth Procedural Content Generation in Games Workshop, PCG</em>. Vol. 1.</p>
+<div id="ref-dippl">
+<p>Goodman, Noah D, and Andreas Stuhlmüller. 2014. “The Design and Implementation of Probabilistic Programming Languages.” <a href="http://dippl.org" class="uri">http://dippl.org</a>.</p>
 </div>
 <div id="ref-sutton1998reinforcement">
 <p>Sutton, Richard S, and Andrew G Barto. 1998. <em>Reinforcement Learning: An Introduction</em>. Vol. 1. 1. MIT press Cambridge.</p>
