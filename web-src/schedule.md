@@ -224,6 +224,12 @@ This document is intended for use by the instructor and TAs, since we don't want
     * Topic 4: Artificial life: Cellular automata and genetic algorithms/evolutionary search
         * CAs, what they are, how they work
         * GAs, special type of search, how they work
+    * What went well:
+        * ALife, GAs, MCTS recap, idea of creative AI and overview, planning domains
+    * What went poorly:
+        * Grammar overview, group "creative AI" exercise didn't go as deep as I'd hoped, didn't get to the planning exercise
+    * What to do next time:
+        * Planning exercise; more grammar examples prepared
     * Assignment 1:
         ~ Individual or pair (medium-length) assignment. Get it started today and try to finish it by the end of the week. Go as far as you can with it.
 
@@ -232,8 +238,6 @@ This document is intended for use by the instructor and TAs, since we don't want
         AND/OR
 
         Make an emoji world simulation, under similar constraints as above: go as far as you can!
-    * Assignment 2:
-        ~ Browse [Creative AI](http://creativeai.net), pick an AI system from there and explicate it. Use the same explication template as last week. Then, find a classmate and read each others' explications and talk about the AI systems.
 * Day 6: Formal Logic \& Prolog Crash Course
     * Reading, in this order:
         * Art of Prolog, chapter 1
@@ -248,10 +252,11 @@ This document is intended for use by the instructor and TAs, since we don't want
         Write a maze solver or other planning problem in Prolog. It's OK if it's simpler than the Python maze or doesn't return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. A good starting point might be, "recognizing a tweet of up to 140 characters" or "confirming a maze solution of fewer than 20 steps". I'll have a template up later tonight.
 * Day 7: Machine learning as function approximation
     * Topic 1: Error minimization and regression/gradient descent
+        * Inputs, outputs, function approximation, ...
         * Linearity, curse of dimensionality, ...
         * Test set vs validation set, dropout, overfitting, stochastic gradient descent, ..., generalizing...
         * What does this have in common with MCTS? With RL?
-    * TODO: Need an exercise! Maybe locate a data set? or design some features/inputs/outputs?
+    * TODO: Need an exercise! Maybe locate a data set and design some features/inputs/outputs?
     * Topic 2: Perceptrons and perceptron learning
         * Perceptron: vector of inputs -> output boolean, learn vector of weights and bias y = (wx+b > 0); usually formulated with input x0 = 1 and w0 = b and y = (wx > 0)
             * Classification problem
@@ -270,7 +275,6 @@ This document is intended for use by the instructor and TAs, since we don't want
 * Day 8: Deep Neural Networks
     * __Note: need to finalize projects by end of today or tomorrow__
     * Reading
-        ~ Primary sources on deep neural networks
         ~ http://deeplearningbook.org, especially chapters 6, 9, 14
         ~ Side references: NEAT, https://nucl.ai/blog/extreme-style-machines/
     * Topic 1: Deep neural networks (and intro to scikit-neuralnetwork)
