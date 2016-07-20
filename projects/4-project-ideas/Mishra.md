@@ -1,0 +1,1 @@
+For my final project, I would like to work individually 
