@@ -1,0 +1,1 @@
+Give a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well. Submit them (as Markdown `.md` files) in this folder.
