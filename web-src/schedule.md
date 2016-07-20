@@ -244,33 +244,75 @@ This document is intended for use by the instructor and TAs, since we don't want
         * Kowalski's "Algorithm = Logic + Control"
         * Art of Prolog, chapter 6 if you have time
     * Topic 1: Propositional logic and inference
+        * Why logic?
+        * Propositional logic basics: propositional variables, and, or, not, implies
+        * Queries
+        * Horn logic and resolution: mechanical proof
+        * Existential and universal quantifiers
+        * Queries with logic variables, and uninterpreted functions
     * Topic 2: Prolog and proof search. "Old school" symbolic AI stuff.
-    * Topic 3: Knowledge bases, planning with temporal logic and event calculus, general game playing
+        * First, mention Prolog is used in Watson and other query answering systems
+        * Prolog rules and queries
+        * Logic variables again
+        * Knowledge bases
+        * Graphs
+        * Planning with temporal logic and event calculus
+        * General game playing
+    * Exercise:
+        * Pair up. Pick a domain distinct from the family tree example and write some first-order logic/Prolog rules (on paper) for a knowledge base about that domain. Include facts, some rules, and some example queries. Some example domains:
+            * Romantic interests/dating compatibility
+            * Car features, options, prices, and ratings
+            * Types of animals/animal-guessing game knowledge base
+            * ...
+    * Topic 3: Prolog data structures
+        * Lists and recursion
+            * member/2
+                * member(E,[E|_]). member(E,[_|L]) :- member(E,L).
+            * append/3
+                * append([],L,L). append([H|T],L,[H|L2]) :- append(T,L,L2).
+            * path/3
+                * path1(E,E,[]). path1(S,E,[S|P]) :- edge(S,M), path1(M,E,P).
+                    * but: cycles in DFS! let's do iterative deepening instead by fixing path length each time:
+                * path2(S,E,P) :- length(P,_), path1(S,E,P).
+        * Numerical operations, math, and constraints: #=, #\=, #>, #<, #>=, #=<
+        * Functors, including ","
+    * What went well:
+        * Knowledge bases, basic propositional logic, derivations, starter Prolog, KB exercise
+    * What went poorly:
+        * Framing narrative, deductive rules, advanced propositional logic, CLP
+    * What to do next time:
+        * Real logic intro, real first order stuff, don't mix syllogistic stuff and propositional stuff, prepare CLP examples
     * Assignment:
-        ~ Individual (medium-length) assignment.
+        ~ Individual or pair (medium-length) assignment. (SKIPPED, maybe something like this on Monday)
 
-        Write a maze solver or other planning problem in Prolog. It's OK if it's simpler than the Python maze or doesn't return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. A good starting point might be, "recognizing a tweet of up to 140 characters" or "confirming a maze solution of fewer than 20 steps". I'll have a template up later tonight.
+        Write a maze solver or other planning problem in Prolog. It's OK if it's simpler than the Python maze or doesn't return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. Good starting points might be, "recognizing a tweet of up to 140 characters" or "confirming a maze solution of fewer than N steps".
 * Day 7: Machine learning as function approximation
     * Topic 1: Error minimization and regression/gradient descent
-        * Inputs, outputs, function approximation, ...
-        * Linearity, curse of dimensionality, ...
-        * Test set vs validation set, dropout, overfitting, stochastic gradient descent, ..., generalizing...
-        * What does this have in common with MCTS? With RL?
-    * TODO: Need an exercise! Maybe locate a data set and design some features/inputs/outputs?
+        * Today we're focusing on supervised learning.
+        * Inputs, outputs/labeling, function approximation, feature design, curse of dimensionality, ...
+        * Separability, linearity, ...
+        * Test set vs validation set, dropout, overfitting, stochastic gradient descent, ...
+        * What does this have in common with MCTS?
+    * Exercise: Pick a data set and design some features/inputs/outputs. Is your data easy or hard to collect?
     * Topic 2: Perceptrons and perceptron learning
         * Perceptron: vector of inputs -> output boolean, learn vector of weights and bias y = (wx+b > 0); usually formulated with input x0 = 1 and w0 = b and y = (wx > 0)
             * Classification problem
             * Initialize all weights to small random values (used to suggest all zeroes, but this suggestion works better with the stochastic gradient descent methods used for training bigger NNs)
             * cost function: How to score a predicted output vs the actual labeled output
             * learning = descending the gradient of the cost function
+            * Perceptron is a linear function, so it's differentiable.
         * Learning algorithm: For each sample input/output, evaluate y = wx (no > 0 here); compare y vs desired output d; update each weight wi += c(d, y) * xi. (e.g. c(a,b) = a - b)
             * Example on some linear thing
             * Will it converge? Yes, iff linearly separable.
             * Let's try it on XOR and see
             * If not linearly separable, will it get close to an approximate answer? NO
-    * Topic 3: Multilayer perceptrons. Maybe pull in tomorrow's material.
+    * Topic 3: Multilayer perceptrons, if there's time:
     * Assignment:
-        ~ Write a perceptron yourself, classify something. We'll need to provide data sets!
+        ~ Write a perceptron yourself, classify something.
+            * Possible data sets:
+                * Custom sequence of numbers to boolean labels
+                * http://archive.ics.uci.edu/ml/datasets/StoneFlakes , with outputs being "is it flint" or "is it found in a quarry" or...
+                * http://archive.ics.uci.edu/ml/datasets/Wholesale+customers , with prediction being "channel" or "region" or...
         ~ Install scikit-neuralnetwork or Keras
 * Day 8: Deep Neural Networks
     * __Note: need to finalize projects by end of today or tomorrow__
