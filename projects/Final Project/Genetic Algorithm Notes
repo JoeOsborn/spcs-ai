@@ -1,0 +1,4 @@
+https://en.wikipedia.org/wiki/Genetic_algorithm
+    - search heuristic that mimics the process of natural selection. 
+    - a population of candidate solutions (called individuals, creatures, or phenotypes) to an optimization problem is evolved toward better solutions. 
+    - Each candidate solution has a set of properties (its chromosomes or genotype) which can be mutated and altered; traditionally, solutions are represented in binary as strings of 0s and 1s
