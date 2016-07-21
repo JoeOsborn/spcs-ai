@@ -373,26 +373,89 @@ Make an emoji world simulation, under similar constraints as above: go as far as
 <li>Kowalski’s “Algorithm = Logic + Control”</li>
 <li>Art of Prolog, chapter 6 if you have time</li>
 </ul></li>
-<li>Topic 1: Propositional logic and inference</li>
-<li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.</li>
-<li>Topic 3: Knowledge bases, planning with temporal logic and event calculus, general game playing</li>
+<li>Topic 1: Propositional logic and inference
+<ul>
+<li>Why logic?</li>
+<li>Propositional logic basics: propositional variables, and, or, not, implies</li>
+<li>Queries</li>
+<li>Horn logic and resolution: mechanical proof</li>
+<li>Existential and universal quantifiers</li>
+<li>Queries with logic variables, and uninterpreted functions</li>
+</ul></li>
+<li>Topic 2: Prolog and proof search. “Old school” symbolic AI stuff.
+<ul>
+<li>First, mention Prolog is used in Watson and other query answering systems</li>
+<li>Prolog rules and queries</li>
+<li>Logic variables again</li>
+<li>Knowledge bases</li>
+<li>Graphs</li>
+<li>Planning with temporal logic and event calculus</li>
+<li>General game playing</li>
+</ul></li>
+<li>Exercise:
+<ul>
+<li>Pair up. Pick a domain distinct from the family tree example and write some first-order logic/Prolog rules (on paper) for a knowledge base about that domain. Include facts, some rules, and some example queries. Some example domains:
+<ul>
+<li>Romantic interests/dating compatibility</li>
+<li>Car features, options, prices, and ratings</li>
+<li>Types of animals/animal-guessing game knowledge base</li>
+<li>…</li>
+</ul></li>
+</ul></li>
+<li>Topic 3: Prolog data structures
+<ul>
+<li>Lists and recursion
+<ul>
+<li>member/2
+<ul>
+<li>member(E,[E|_]). member(E,[_|L]) :- member(E,L).</li>
+</ul></li>
+<li>append/3
+<ul>
+<li>append([],L,L). append([H|T],L,[H|L2]) :- append(T,L,L2).</li>
+</ul></li>
+<li>path/3
+<ul>
+<li>path1(E,E,[]). path1(S,E,[S|P]) :- edge(S,M), path1(M,E,P).
+<ul>
+<li>but: cycles in DFS! let’s do iterative deepening instead by fixing path length each time:</li>
+</ul></li>
+<li>path2(S,E,P) :- length(P,_), path1(S,E,P).</li>
+</ul></li>
+</ul></li>
+<li>Numerical operations, math, and constraints: #=, #=, #&gt;, #&lt;, #&gt;=, #=&lt;</li>
+<li>Functors, including “,”</li>
+</ul></li>
+<li>What went well:
+<ul>
+<li>Knowledge bases, basic propositional logic, derivations, starter Prolog, KB exercise</li>
+</ul></li>
+<li>What went poorly:
+<ul>
+<li>Framing narrative, deductive rules, advanced propositional logic, CLP</li>
+</ul></li>
+<li>What to do next time:
+<ul>
+<li>Real logic intro, real first order stuff, don’t mix syllogistic stuff and propositional stuff, prepare CLP examples</li>
+</ul></li>
 <li><dl>
 <dt>Assignment:</dt>
-<dd>Individual (medium-length) assignment.
+<dd>Individual or pair (medium-length) assignment. (SKIPPED, maybe something like this on Monday)
 </dd>
 </dl>
-Write a maze solver or other planning problem in Prolog. It’s OK if it’s simpler than the Python maze or doesn’t return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. A good starting point might be, “recognizing a tweet of up to 140 characters” or “confirming a maze solution of fewer than 20 steps”. I’ll have a template up later tonight.</li>
+Write a maze solver or other planning problem in Prolog. It’s OK if it’s simpler than the Python maze or doesn’t return paths; the key thing is to specify what movement through a maze means, and derive the solution algorithm automatically from that. Good starting points might be, “recognizing a tweet of up to 140 characters” or “confirming a maze solution of fewer than N steps”.</li>
 </ul></li>
 <li>Day 7: Machine learning as function approximation
 <ul>
 <li>Topic 1: Error minimization and regression/gradient descent
 <ul>
-<li>Inputs, outputs, function approximation, …</li>
-<li>Linearity, curse of dimensionality, …</li>
-<li>Test set vs validation set, dropout, overfitting, stochastic gradient descent, …, generalizing…</li>
-<li>What does this have in common with MCTS? With RL?</li>
+<li>Today we’re focusing on supervised learning.</li>
+<li>Inputs, outputs/labeling, function approximation, feature design, curse of dimensionality, …</li>
+<li>Separability, linearity, …</li>
+<li>Test set vs validation set, dropout, overfitting, stochastic gradient descent, …</li>
+<li>What does this have in common with MCTS?</li>
 </ul></li>
-<li>TODO: Need an exercise! Maybe locate a data set and design some features/inputs/outputs?</li>
+<li>Exercise: Pick a data set and design some features/inputs/outputs. Is your data easy or hard to collect?</li>
 <li>Topic 2: Perceptrons and perceptron learning
 <ul>
 <li>Perceptron: vector of inputs -&gt; output boolean, learn vector of weights and bias y = (wx+b &gt; 0); usually formulated with input x0 = 1 and w0 = b and y = (wx &gt; 0)
@@ -401,6 +464,7 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 <li>Initialize all weights to small random values (used to suggest all zeroes, but this suggestion works better with the stochastic gradient descent methods used for training bigger NNs)</li>
 <li>cost function: How to score a predicted output vs the actual labeled output</li>
 <li>learning = descending the gradient of the cost function</li>
+<li>Perceptron is a linear function, so it’s differentiable.</li>
 </ul></li>
 <li>Learning algorithm: For each sample input/output, evaluate y = wx (no &gt; 0 here); compare y vs desired output d; update each weight wi += c(d, y) * xi. (e.g. c(a,b) = a - b)
 <ul>
@@ -410,10 +474,27 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 <li>If not linearly separable, will it get close to an approximate answer? NO</li>
 </ul></li>
 </ul></li>
-<li>Topic 3: Multilayer perceptrons. Maybe pull in tomorrow’s material.</li>
+<li>Topic 3: Multilayer perceptrons, if there’s time. Or multiclass.</li>
+<li>What went well:
+<ul>
+<li>General ML intro, data set exercise, most perceptron stuff. Overall a pretty good day.</li>
+</ul></li>
+<li>What went poorly:
+<ul>
+<li>Derivation of perceptron weight updates, until I found my feet and said it the right way</li>
+</ul></li>
+<li>What to do next time:
+<ul>
+<li>Run through the derivation once for practice, should have written down my insight from this morning about “dw/derror”.</li>
+</ul></li>
 <li><dl>
 <dt>Assignment:</dt>
-<dd>Write a perceptron yourself, classify something. We’ll need to provide data sets!
+<dd>Write a perceptron yourself, classify something.
+<ul>
+<li>Finish implementing the <code>perceptron</code> function and implement the validation logic for the last (random points above/below a line) example.</li>
+<li>Tweak parameters, training vs validation set size, number of training epochs, noisiness of the data, etc, and take notes on how accuracy changes.</li>
+<li>If you can, find a dataset with a binary output label and train a perceptron on it.</li>
+</ul>
 </dd>
 <dd>Install scikit-neuralnetwork or Keras
 </dd>
@@ -437,8 +518,6 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 </ul></li>
 <li>Are those networks made out of linear perceptrons like yesterday, or something else?
 <ul>
-<li>Something else — why?</li>
-<li>((TODO: UNSURE:: Because stacking linear classifiers just gives you linear separation in increasing numbers of dimensions. But this can get really inefficient?))</li>
 <li>By analogy to non-linear neuron firing “activation”, we use activation functions that are “nearly” linear. The default suggestion is ReLU (rectified linear units) because they’re simple and cheap to calculate and don’t have the same saturation issues as sigmoids (becoming insensitive to inputs)</li>
 <li>However, for output units sigmoids are still used in predicting binary variables (and softmax for multi-class prediction): ensure there’s always a strong gradient when you have a wrong answer.</li>
 <li>The loss function has to be designed with the output layer in mind</li>
@@ -448,11 +527,10 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 <ul>
 <li>Backpropagation, similar to RL/MCTS but using derivatives</li>
 <li>“back-propagation refers only to the method for computing the gradient, while another algorithm, such as stochastic gradient descent, is used to perform learning using this gradient”</li>
-<li>Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters.</li>
-<li>TODO: Worked example? More detailed algorithm pseudocode?</li>
+<li>Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters. (dweight/derror is what we want to find)</li>
 </ul></li>
 </ul></li>
-<li>TODO: Exercise? Or do it after topic 2?</li>
+<li>Break and project idea talk</li>
 <li>Topic 2: Image recognition and convolution
 <ul>
 <li>LeCun, 1989</li>
@@ -470,9 +548,9 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 </ul></li>
 <li>One layer: Convolve to linear activations-&gt;Run through nonlinear activation function like ReLU (“detector”)-&gt;pool local groups into summary statistics (to achieve e.g. translation invariance)</li>
 </ul></li>
+<li>Break and project idea talk</li>
 <li>Topic 3: Auto-encoders
 <ul>
-<li>Probably won’t have time…?</li>
 <li>(1987 and onwards)</li>
 <li>Neural net trained to try copying input to output</li>
 <li>Design them to be unable to learn perfect copying, so that their approximate copies only “resemble” the inputs, to learn useful/typical/important properties of the data</li>
@@ -486,15 +564,18 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 </ul></li>
 <li><dl>
 <dt>Assignment:</dt>
-<dd>Write an image classifier or auto encoder?
+<dd>Try writing a convolutional image classifier or an autoencoder, following example code for your chosen deep learning framework.
 </dd>
 </dl></li>
 </ul></li>
 <li>Day 9: Computer History Museum
 <ul>
-<li>Assignment: Explication of a historical AI system</li>
+<li>Assignment: If we haven’t talked about your project ideas yet, find me and talk to me.</li>
+<li><p>Assignment: Explication of a historical AI system.</p>
+<p>Pick an AI system you see or see referenced in the museum, or consult a Wikipedia article or the course reader (the section just before Kowalski’s paper talks about a few historical AI systems remade in miniature in Prolog). Explicate it as you did on the first day:</p>
+<p>Describe it briefly and explain its “perspective.” Who wrote this system and for what purpose? Who uses the system—are their goals aligned with those of the system authors? From a knowledge representation standpoint, how does it view the world? Which concepts are central, and which concepts are peripheral? How does this system interact with humans, and what does it know or assume about the humans who use it? How could a hostile user or third party subvert this system and break it or harrass/injure other users? Consult the documentation of this system, or articles written about it, if necessary. Write at least 300 words.</p></li>
 </ul></li>
-<li>Day 10: Prolog techniques; recurrent neural networks.
+<li>Day 10: Intermediate Prolog techniques; recurrent neural networks.
 <ul>
 <li><dl>
 <dt>Reading</dt>
@@ -511,7 +592,7 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 </ul>
 </dd>
 </dl></li>
-<li>Topic 1: List/tree processing and meta-interpreters</li>
+<li>Topic 1: List/tree processing and meta-interpreters. Prolog in Prolog.</li>
 <li>Topic 2: RNNs and string-to-string translation
 <ul>
 <li>Recurrent NNs: NNs with cycles.</li>
@@ -522,17 +603,8 @@ Write a maze solver or other planning problem in Prolog. It’s OK if it’s sim
 <li>Input, output, forget gates collect activations from inside and outside the block, and control the activation of the cell via multiplications (small black circles). The input and output gates multiply the input and output of the cell while the forget gate multiplies the cell’s previous state. No activation function is applied within the cell. Gate activations usually logistic sigmoid, cell input and output usually logistic sigmoid but sometimes output is identity function.</li>
 </ul></li>
 </ul></li>
-<li>Topic 3: Deep Reinforcement Learning
-<ul>
-<li>learning a policy by learning state-action function, approximating rather than filling in a table</li>
-</ul></li>
-<li><dl>
-<dt>Assignment:</dt>
-<dd>Individual or pair (short) assignment.
-</dd>
-<dd>symbolic manipulation stuff, NLP, …?
-</dd>
-</dl></li>
+<li>Project talk.</li>
+<li>Assignment: Work on projects.</li>
 </ul></li>
 <li>Day 11: Argumentation and Non-Monotonic Logics
 <ul>
