@@ -1,1 +1,16 @@
-Give a list of three or more project ideas you might be interested in doing, either from the suggestions or your own idea. If you have a partner or partners in mind, let me know as well. Submit them (as Markdown `.md` files) in this folder.
+# Project Idea
+Create a (convolutional) neural network to parse images with handwritten content into a textual output.
+
+Outline:
+  * Will likely not use a framework (external library) for the network
+    * May use a mathematical algebra (matrix) library
+  * Will train on a large open-source dataset
+  * May need to run on external server
+
+# Group Members
+ * Valerio Galanti (valerio@galanti.net)
+ * Neil Johari (@cskreem)
+ * William Chern (@wchern)
+
+
+ tl;dr OCR
