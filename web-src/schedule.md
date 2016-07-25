@@ -306,13 +306,18 @@ This document is intended for use by the instructor and TAs, since we don't want
             * Will it converge? Yes, iff linearly separable.
             * Let's try it on XOR and see
             * If not linearly separable, will it get close to an approximate answer? NO
-    * Topic 3: Multilayer perceptrons, if there's time:
+    * Topic 3: Multilayer perceptrons, if there's time. Or multiclass.
+    * What went well:
+        * General ML intro, data set exercise, most perceptron stuff. Overall a pretty good day.
+    * What went poorly:
+        * Derivation of perceptron weight updates, until I found my feet and said it the right way
+    * What to do next time:
+        * Run through the derivation once for practice, should have written down my insight from this morning about "dw/derror".
     * Assignment:
         ~ Write a perceptron yourself, classify something.
-            * Possible data sets:
-                * Custom sequence of numbers to boolean labels
-                * http://archive.ics.uci.edu/ml/datasets/StoneFlakes , with outputs being "is it flint" or "is it found in a quarry" or...
-                * http://archive.ics.uci.edu/ml/datasets/Wholesale+customers , with prediction being "channel" or "region" or...
+            * Finish implementing the `perceptron` function and implement the validation logic for the last (random points above/below a line) example.
+            * Tweak parameters, training vs validation set size, number of training epochs, noisiness of the data, etc, and take notes on how accuracy changes.
+            * If you can, find a dataset with a binary output label and train a perceptron on it.
         ~ Install scikit-neuralnetwork or Keras
 * Day 8: Deep Neural Networks
     * __Note: need to finalize projects by end of today or tomorrow__
@@ -323,8 +328,6 @@ This document is intended for use by the instructor and TAs, since we don't want
         * Most neural networks have many "hidden" layers between the inputs and outputs, not just the one layer described yesterday
             * The "> 0" bit is a kind of "output transformation" from activation values to classes.
         * Are those networks made out of linear perceptrons like yesterday, or something else?
-            * Something else --- why?
-            * ((TODO: UNSURE:: Because stacking linear classifiers just gives you linear separation in increasing numbers of dimensions. But this can get really inefficient?))
             * By analogy to non-linear neuron firing "activation", we use activation functions that are "nearly" linear. The default suggestion is ReLU (rectified linear units) because they're simple and cheap to calculate and don't have the same saturation issues as sigmoids (becoming insensitive to inputs)
             * However, for output units sigmoids are still used in predicting binary variables (and softmax for multi-class prediction): ensure there's always a strong gradient when you have a wrong answer.
             * The loss function has to be designed with the output layer in mind
@@ -332,9 +335,8 @@ This document is intended for use by the instructor and TAs, since we don't want
         * Learning in deep networks
             * Backpropagation, similar to RL/MCTS but using derivatives
             * "back-propagation refers only to the method for computing the gradient, while another algorithm, such as stochastic gradient descent, is used to perform learning using this gradient"
-            * Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters.
-            * TODO: Worked example? More detailed algorithm pseudocode?
-    * TODO: Exercise? Or do it after topic 2?
+            * Find gradient (partial derivative) of cost function WRT parameters, then try to climb down that gradient by tweaking parameters. (dweight/derror is what we want to find)
+    * Break and project idea talk
     * Topic 2: Image recognition and convolution
         * LeCun, 1989
         * Useful if your data has a grid topology, e.g. time series (1d) or image data (2d) or video (3d) or ...
@@ -346,8 +348,8 @@ This document is intended for use by the instructor and TAs, since we don't want
         * If a regular neural network lets every input unit react with every output unit equally, convolutions enforce some locality and admit smaller, more efficient networks (or equivalently, similarly sized networks that extract more medium-level features)
             * Multiple convolution layers can build up high level structures starting from the low level inputs
         * One layer: Convolve to linear activations->Run through nonlinear activation function like ReLU ("detector")->pool local groups into summary statistics (to achieve e.g. translation invariance)
+    * Break and project idea talk
     * Topic 3: Auto-encoders
-        * Probably won't have time...?
         * (1987 and onwards)
         * Neural net trained to try copying input to output
         * Design them to be unable to learn perfect copying, so that their approximate copies only "resemble" the inputs, to learn useful/typical/important properties of the data
@@ -357,10 +359,24 @@ This document is intended for use by the instructor and TAs, since we don't want
             * Denoising, reconstruction, ...
             * A colleague uses these for Magic: The Gathering card generation from partial examples
     * Assignment:
-        ~ Write an image classifier or auto encoder?
+        ~ Try writing a convolutional image classifier or an autoencoder, following example code for your chosen deep learning framework.
 * Day 9: Computer History Museum
-    * Assignment: Explication of a historical AI system
-* Day 10: Prolog techniques; recurrent neural networks.
+    * Assignment: If we haven't talked about your project ideas yet, find me and talk to me.
+    * Assignment: Explication of a historical AI system.
+
+        Pick an AI system you see or see referenced in the museum, or consult a Wikipedia article or the course reader (the section just before Kowalski's paper talks about a few historical AI systems remade in miniature in Prolog). Explicate it as you did on the first day:
+
+        Describe it briefly and explain its "perspective." Who wrote
+        this system and for what purpose? Who uses the system---are their goals aligned
+        with those of the system authors? From a knowledge representation standpoint,
+        how does it view the world? Which concepts are central, and which concepts are
+        peripheral? How does this system interact with humans, and what does it know or
+        assume about the humans who use it? How could a hostile user or third party
+        subvert this system and break it or harrass/injure other users? Consult the
+        documentation of this system, or articles written about it, if necessary. Write
+        at least 300 words.
+
+* Day 10: Intermediate Prolog techniques; recurrent neural networks.
     * Reading
         ~ ML:
             * "The Unreasonable Effectiveness of RNNs" (Blog post)
@@ -368,18 +384,15 @@ This document is intended for use by the instructor and TAs, since we don't want
             * http://karpathy.github.io/2016/05/31/rl/
         ~ Prolog:
             * Art of Prolog, chapter 14
-    * Topic 1: List/tree processing and meta-interpreters
+    * Topic 1: List/tree processing and meta-interpreters. Prolog in Prolog.
     * Topic 2: RNNs and string-to-string translation
         * Recurrent NNs: NNs with cycles.
         * Unrolling. Show diagram.
         * backpropagation through time.
         * LSTM
             * Input, output, forget gates collect activations from inside and outside the block, and control the activation of the cell via multiplications (small black circles). The input and output gates multiply the input and output of the cell while the forget gate multiplies the cell’s previous state. No activation function is applied within the cell. Gate activations usually logistic sigmoid, cell input and output usually logistic sigmoid but sometimes output is identity function.
-    * Topic 3: Deep Reinforcement Learning
-        * learning a policy by learning state-action function, approximating rather than filling in a table
-    * Assignment:
-        ~ Individual or pair (short) assignment.
-        ~ symbolic manipulation stuff, NLP, ...?
+    * Project talk.
+    * Assignment: Work on projects.
 * Day 11: Argumentation and Non-Monotonic Logics
     * Reading
         ~ At least Nute's defeasible logic paper.
