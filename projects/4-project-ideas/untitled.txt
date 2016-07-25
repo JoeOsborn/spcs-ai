@@ -1,0 +1,1 @@
+Connect 4 game using Alpha Beta Pruning (Minimax) algorithm as the ai. Implementation of the game in Java using JFrame.
