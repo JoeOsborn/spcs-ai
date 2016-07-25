@@ -1,0 +1,13 @@
+MANIFEST.in
+README.rst
+ez_setup.py
+run.py
+setup.py
+othellotk/__init__.py
+othellotk/dialogs.py
+othellotk/othellotk.py
+othellotk.egg-info/PKG-INFO
+othellotk.egg-info/SOURCES.txt
+othellotk.egg-info/dependency_links.txt
+othellotk.egg-info/entry_points.txt
+othellotk.egg-info/top_level.txt
