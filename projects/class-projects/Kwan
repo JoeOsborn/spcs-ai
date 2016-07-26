@@ -1,0 +1,20 @@
+Project Proposal
+
+Group: Melissa Kwan (individual)
+Goal: To explore novelty search and compare its performance on mazes compared to MCTS
+
+Steps
+Finish writing MCTS and testing it
+Research novelty search (Long step)
+Write pseudocode (Long step)
+Code it based on researched steps (Long step)
+Test novelty search's performance on different mazes
+Compare results with MCTS
+Come up with conclusion
+
+Testing
+Data has already been provided (Mazes from assignment 3)
+
+Halfway there
+MCTS finished and tested
+Pseudocode for novelty search written
