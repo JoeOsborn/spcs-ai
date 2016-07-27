@@ -1,0 +1,45 @@
+https://en.wikipedia.org/wiki/Genetic_algorithm
+    - search heuristic that mimics the process of natural selection. 
+    - a population of candidate solutions (called individuals, creatures, or phenotypes) to an optimization problem is evolved toward better solutions. 
+    - Each candidate solution has a set of properties (its chromosomes or genotype) which can be mutated and altered; traditionally, solutions are represented in binary as strings of 0s and 1s
+    - starts from a population of randomly generated individuals
+    - the population in each iteration called a generation
+    - the fitness is usually the value of the objective function in the optimization problem being solved
+    - the algorithm terminates when either a maximum number of generations has been produced, or a satisfactory fitness level has been reached for the population
+    - A typical genetic algorithm requires:
+
+a genetic representation of the solution domain,
+a fitness function to evaluate the solution domain.
+    - Often, the initial population is generated randomly
+    - For each new solution to be produced, a pair of "parent" solutions is selected for breeding from the pool selected previously. By producing a "child" solution using the above methods of crossover and mutation, a new solution is created which typically shares many of the characteristics of its "parents". New parents are selected for each new child, and the process continues until a new population of solutions of appropriate size is generated. 
+
+http://www.ai-junkie.com/ga/intro/gat2.html
+    - Test each chromosome to see how good it is at solving the problem at hand and assign a fitness score accordingly. The 
+    fitness score is a measure of how good that chromosome is at solving the problem to hand.
+    - Select two members from the current population. The chance of being selected is proportional to the chromosomes fitness. 
+    - Roulette wheel selection is a commonly used method.
+    - Dependent on the crossover rate crossover the bits from each chosen chromosome at a randomly chosen point.
+    - Step through the chosen chromosomes bits and flip dependent on the mutation rate.
+    - Repeat step 2, 3, 4 until a new population of N members has been created.
+    - Good crossover rate is 0.7
+    - at crossover, chose a random bit and switch all bits after that point to get a child from both parents
+    - mutation rate: This is the chance that a bit within a chromosome will be flipped (0 becomes 1, 1 becomes 0). This is usually 
+    a very low value for binary encoded genes, say 0.001
+    
+    
+1. Genotype - encoding as a string
+    A. Phenotype - behavior/appearance of the artifact
+2. Fitness - evaluation of individuals (Can have human choice)
+3. Selection - which individuals reproduces (Can have human choice)
+4. Crossover - A + B --> C,D
+5. Mutation - C --> C'
+6. Initial Population
+7. Changing parameters over time
+
+Different problems to solve:
+    - creating melodies
+    - generating art based on a specific style
+    - making symetric avatars
+    - generating jokes/puns (These clever GAs will let you input a word you wish to pun or a subject you'd like to joke about, and will return a variety of solutions) 
+    - analysis of gene expression (profiles much quicker and easier. This helps to classify what genes play a part in various diseases, and further can help to identify genetic causes for the development of diseases.)
+    - GA-assisted financial forecasting
