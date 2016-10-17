@@ -1,0 +1,65 @@
+Sentiment Analysis
+
+1. Background
+The exponential growth of users on social media platforms inevitably generates vast amounts of public opinion, ranging from product reviews to concerns about political changes. Government bodies and companies can gain significant insight by analyzing the attitudes of these comments. This automated mining of text to deduce the attitude of the writer is known as sentiment analysis or opinion mining. Research in natural language processing has led to comparative studies on the specific approaches that are applied throughout sentiment analysis. 
+
+Often times in the online community, the online reputation of a product dictates its performance in the market. Companies can mine product reviews and forums to track the complaints of dissatisfied customers or to track the popular trends that people are inclined to be satisfied with. Sentiment analysis is often used to track the sentiment of bloggers because they play a large role in shifting the opinions of their readers. Governments and political parties search forums to see the shifts in public opinion towards a certain idea or political figure. This concept can also be used to track threats that are directed towards the government by analyzing text for large amounts of negative polarity. Another application that is being slowly implement can also be to search online discussion boards for those at risk of suicide by and severe depression. The applications of sentiment analysis are endless and are continuing to be implemented in various fields. 
+
+2. Branches
+Sentiment analysis falls under the larger canopy of natural language processing, a branch of artificial intelligence.  Natural language processing focuses on human and computer interaction and branches out into a variety of fields such as parsing, speech recognition, and other fields including sentiment analysis. Sentiment analysis itself, also branches into various subfields. 
+
+All of the sub branches of sentiment analysis all have specific tasks regarding sentiment. Subjectivity definition analyzes the text to see if the text contains any opinions. Aspect based sentiment summarization assigns star ratings or scores to a product based on the text it analyzes. Text summarization for opinions analyzes large segments of text and generates sentences to summarize it. Another branch known as contrastive viewpoint summarization emphasizes contradicting opinions apparent in the text. Product feature extraction specifically analyzes reviews and extracts the features of the product from the text. Opinion spam sifts through text to identify fake or bogus opinions. And lastly, there is sentiment prediction, which determines the polarity of the text. Often times sentiment prediction is referred to as sentiment analysis and there is no differentiation between the branches. 
+
+2.1 Approaches
+Sentiment analysis or more specifically, “sentiment prediction”, groups the emotions of a text into three categories: positive, negative, or neutral. Classification can occur on three levels, document level, sentence level, or word/feature level. This classification correlates to how the input will be broken down. There are various approaches that can be taken to break down text but the three main families are lexical based, machine learning, and hybrid. This paper will expand individually on lexical and machine approaches. 
+
+3. Lexical
+Lexical means relating to the words of a language, so the process relies on individual words of the input. This approach is able to cover a broader range of words because it has access to such a large network of words but also when using lexicons there are finite number words in the lexicon, which can also prove to be a disadvantage. Lexical approach is also unsupervised learning because there are no data sets involved. 
+
+The lexical approach is one broad format and there are two specific techniques that can be used called dictionary based or corpus based approach. In a basic lexical format there is a certain text inputted and each word is tokenized, meaning that each word is identified and given a token. Each token is then matched to a word in the dictionary and if the word is correlated to positive then a score is incremented, but if the word is negative then the score is decremented. At the end if the score is above a certain threshold then the overall polarity of the input is positive. But if the majority of the words registered as neutral than the input is registered as neutral overall. 
+
+3.1 Dictionary Based
+ The dictionary-based approach only affects the word bank in which the words are compared in the lexical approach. In the dictionary approach, an expert picks a group of opinion words, known as seeds, which are already tagged with polarities. Then the program uses Word Net to expand on the collection, by collecting synonyms and antonyms to the words, which correlate to the polarities of the word. Then it proceeds to iterate through all the words till it exhausts its options. Afterwards the same process of tokenizing, word matching to the new dictionary, and score incrementing occurs. 
+
+3.2 Corpus Based
+The corpus based differs from the dictionary based because instead of a group of pre picked words, the word bank comes from a corpus with tagged sentiments. Corpus based has an advantage over dictionary based because it is better able to pick up the polarities of slang and online jargon, which the dictionary based approach would not be able to tackle because the dictionary only expands off of previously picked words. 
+
+It is important to realize that the dictionary and corpus based approaches only differ in the word bank that the lexical approach uses and the rest of the lexical process is the same for both techniques.  
+
+4. Machine Learning
+
+The machine learning approach to sentiment analysis is often viewed as a more efficient because it can be trained to for specific purposes and domains. This approach requires two data sets, a training data set to learn as well as test data set to validate the performance of the algorithm. But unlike the lexicon approach is has a hard time being applied to new data because it needs to have a new set of training data.  In machine learning the algorithm trains to find patterns that it can then apply to random data that it has never seen before. There are a variety of techniques used in machine learning for sentiment analysis such as: bayseian networks, support vector machines, neural networks, etc. 
+
+In sentiment analysis, especially for micro blogs such as twitter, the input data is pre-processed meaning the data is cleaned up. One step is called stop word removal, so small words or prepositions (the, and, before, while, so, etc.) are removed. Another stem called stemming takes all the different tenses of a word and condenses them to the root tense. Words such a walker or walking would be condensed to the word walk. 
+
+5. Conclusion
+
+Sentiment Analysis is a constantly growing field because it is proven to be such a valuable technique to apply to user generated content. New techniques are being explored to generate more efficient sentiment analysis processes. This paper only expanded on one particular technique but there are many others to explore. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+References
+
+[1]  Agarwal, Apoorv, Boyi Xie, Ilia Vovsha, Owen Rambow, and Rebecca Passonneau. "Sentiment Analysis Based on Dictionary Approach." (2016): 1-9. Columbia University. Web.
+
+[2] Collomb, Anais, Crina Costea, Damien Joyeux, Omar Hasan, and Lionel Brunie. "A Study and Comparison of Sentiment Analysis Methods for Reputation Evaluation." (n.d.): 5-10. Web.
+
+[3] Vohra, S.M., and J.B Teraiya. "A Comparative Study of Sentiment Analysis Techniques." Journal of Information, Knowledge, and Research in Computer Engineering 02.02 (2015): 313-17. Web.
+
+[4] Thakkar, Harsh, and Dhiren Patel. "Approaches for Sentiment Analysis on Twitter: A State-of-Art Study." (n.d.): 1-6. Web.
+
+[5] D'Andrea, Alessia, Fernando Ferri, and Patrizia Grifoni. "Approaches, Tools and Applications for Sentiment Analysis Implementation." Trans. Tiziana Guzzo. International Journal of Computer Applications 125.3 (2015): 26-33. Web.
+
+[6] Bhonde, Reshma, Binita Bhagwat, Sayali Ingulkar, and Apeksha Pande. "Sentiment Analysis Based on Dictionary Approach." International Journal of Emerging Engineering Research and Technology 3.1 (2015): 51-54. Web.
+
+

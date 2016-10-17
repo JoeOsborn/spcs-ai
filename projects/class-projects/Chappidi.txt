@@ -1,0 +1,13 @@
+Project Proposal
+
+Group: Individual
+
+Topic: Paper on Sentiment Analysis
+
+Goal:
+
+1. Discuss Sentiment Analysis in a Broad perspective 2. Detail and Compare Systems, Approaches, and Techniques used in Sentiment Analysis 3.  Discuss why people use this (surveillance, customer service, etc. ), How it fits into NLP
+
+How: Reading alot of papers? and reseraching
+
+Halfway: Doing 1, 2, 3 of the goal 
